@@ -1,6 +1,6 @@
 ![image](https://github.com/user-attachments/assets/a63bcaf5-b3e6-47f0-84eb-361b0cb964ee)
 
-# 🌳Mangue PLay🌳
+# 🌳Mangue Play🌳
  Esse projeto visa ajudar ...
 
 # Links Gerais
