@@ -1,18 +1,23 @@
-💰Mangue PLay💰
-Esse projeto visa ajudar tanto pequenos empreendedores quanto grandes empresas por meio de funcionalidades práticas que ampliem e aprimorem os conhecimentos e resultados acerca do tema proposto: economia e investimentos.
+![image](https://github.com/user-attachments/assets/a63bcaf5-b3e6-47f0-84eb-361b0cb964ee)
 
-Links Gerais
-Jira: 
+# 🌳Mangue PLay🌳
+ Esse projeto visa ajudar ...
 
-Link Figma: https://www.figma.com/design/0mc6tmKI8ZHaOIpScGqfJp/Untitled?node-id=1-2&t=Tk5KxfLoLiqDRM5D-1
+# Links Gerais
+ - Jira: https://mangue-play.atlassian.net/jira/software/projects/MP/boards/1/backlog?atlOrigin=eyJpIjoiYzYwNzBjZjAzMDdhNDMyYWFlOTdmYjZhMTUzMmUyNDAiLCJwIjoiaiJ9
 
-Link Azure: https://smartcapital-fdd8hfepc3ekdxez.brazilsouth-01.azurewebsites.net/
+- Link Figma:
 
-Entrega 1️⃣
-Imagens
-Entrega 2️⃣
-Imagens
-Contribuidores
+- Link Azure:
+
+# Sr1:
+<details>
+  <summary>Imagens</summary>
+
+</details>
+
+
+# Contribuidores
 Bruno Carvalho -  bcf2@cesar.school
 
 Gabriel Antônio - gaor@cesar.school
