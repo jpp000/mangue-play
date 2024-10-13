@@ -51,6 +51,7 @@ def cadastro(request):
         password2 = request.POST.get('password2')
         numero_telefone = request.POST.get('numero_telefone')
         estado = request.POST.get('estado')
+        is_admin = request.POST.get('is_admin') == 'on'  # Checkbox para definir se é admin
 
         if password1 != password2:
             messages.error(request, 'As senhas não coincidem.')
@@ -65,9 +66,8 @@ def cadastro(request):
             return render(request, 'cadastro.html', {'estados': estados_brasil})
 
         user = User.objects.create_user(username=username, email=email, password=password1)
-        UserProfile.objects.create(user=user, numero_telefone=numero_telefone, estado=estado)
+        UserProfile.objects.create(user=user, numero_telefone=numero_telefone, estado=estado, is_admin=is_admin)
 
-        login(request) 
         messages.success(request, 'Cadastro realizado com sucesso!')
         return redirect('login')
 

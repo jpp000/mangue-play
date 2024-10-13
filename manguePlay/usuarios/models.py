@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 class UserProfile(models.Model):
     ESTADOS_BRASIL = [
     ('AC', 'Acre'),
@@ -33,8 +32,9 @@ class UserProfile(models.Model):
     ('TO', 'Tocantins'),
 ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    numero_telefone = models.CharField(max_length=15, blank=True, null=True)
-    estado = models.CharField(max_length=2, choices=ESTADOS_BRASIL, blank=True, null=True)
+    numero_telefone = models.CharField(max_length=15)
+    estado = models.CharField(max_length=50)
+    is_admin = models.BooleanField(default=False)
 
-    def __str__(moradia):
-        return moradia.user.username
+    def __str__(self):
+        return self.user.username
