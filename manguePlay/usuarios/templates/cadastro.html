@@ -96,28 +96,45 @@
     </style>
 </head>
 <body>
-    <a href="pag_inicial.html" class="back-button">Voltar</a>
+    <a href="{% url 'home' %}" class="back-button">Voltar</a>
     
     <div class="register-form">
         <h2>Cadastre-se</h2>
-        <form action="/register" method="POST">
-            <div class="role-selection">
-                <label>
-                    <input type="radio" name="role" value="user" checked> Usuário
-                </label>
-                <label>
-                    <input type="radio" name="role" value="admin"> Administrador
-                </label>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
             </div>
-            <input type="text" name="fullname" placeholder="Nome Completo" required>
-            <input type="email" name="email" placeholder="E-mail" required>
-            <input type="text" name="username" placeholder="Nome de Usuário" required>
-            <input type="password" name="password" placeholder="Senha" required>
-            <input type="password" name="confirm_password" placeholder="Confirmar Senha" required>
-            <input type="submit" value="Cadastrar">
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">Nome de usuário:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password1">Senha:</label>
+            <input type="password" id="password1" name="password1" required>
+
+            <label for="password2">Confirme a senha:</label>
+            <input type="password" id="password2" name="password2" required>
+
+            <label for="numero_telefone">Número de telefone:</label>
+            <input type="text" id="numero_telefone" name="numero_telefone">
+
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado">
+                {% for code, name in estados %}
+                    <option value="{{ code }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Cadastrar</button>
         </form>
         <div class="already-registered">
-            <a href="login.html">Já possui uma conta? Faça login</a>
+            <a class= "link" href="{% url 'login' %}">Já tem conta? Faça login</a>
         </div>
     </div>
 

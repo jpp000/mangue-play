@@ -99,7 +99,8 @@
     </style>
 </head>
 <body>
-    <a href="pag_inicial.html" class="back-button">Voltar</a>
+
+    <a href="{% url 'home' %}" class="back-button">Voltar</a>
 
     <div class="login-form">
         <h2>Login</h2>
@@ -117,7 +118,7 @@
             <input type="submit" value="Entrar">
         </form>
         <div class="already-registered">
-            <a href="cadastro.html">Não possui uma conta? Cadastre-se</a>
+            <a class="link" href="{% url 'cadastro' %}">Não possue conta? Cadastre-se</a>
         </div>
     </div>
 
