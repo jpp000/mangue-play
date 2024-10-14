@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.models import User
-from .models import UserProfile  # Verifique se está correto
+from .models import UserProfile  
 
 
 
@@ -18,7 +18,7 @@ def login(request):
             if user is not None:
                 auth_login(request, user)
                 messages.success(request, f'Bem-vindo, {username}!')
-                return render(request,'app.html')  # Redireciona para a página inicial
+                return render(request,'app.html') 
             else:
                 messages.error(request, 'Usuário ou senha inválidos.')
         else:
