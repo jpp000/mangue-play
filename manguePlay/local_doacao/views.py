@@ -28,6 +28,6 @@ def adicionar_doacao(request):
         doacao.save()
 
         # Redirecionar para a página inicial ou de confirmação
-        return redirect('home')  # Altere 'home' para o nome da view que você deseja redirecionar após salvar
+        return redirect('user_dashboard')  # Altere 'home' para o nome da view que você deseja redirecionar após salvar
 
     return render(request, 'local.html')
