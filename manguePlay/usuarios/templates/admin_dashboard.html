@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -97,7 +98,7 @@
         <h1>Funcionalidades</h1>
         
         <a href="pagina1.html" class="functionality-box">Visualizar catálogo</a>
-        <a href="adc_local.html" class="functionality-box">Visualizar local da doação</a>
+        <a href="{% url 'local_doacao' %}" class="functionality-box">Visualizar local da doação</a>
         <a href="#" class="functionality-box">Estoque</a>
         <a href="#" class="functionality-box">Gerar Relatória De vendas</a>
     </div>
