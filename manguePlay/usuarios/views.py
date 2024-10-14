@@ -19,9 +19,9 @@ def login_view(request):
                 # Verifica se o usuário é admin
                 user_profile = UserProfile.objects.get(user=user)
                 if user_profile.is_admin:
-                    return render(request, 'admin_dashboard.html')  # Redireciona para a página de admin
+                    return redirect('admin_dashboard')  # Redireciona para a página de admin
                 else:
-                    return render(request, 'user_dashboard.html')  # Redireciona para a página de usuário
+                    return redirect('user_dashboard')  # Redireciona para a página de usuário
                 
             else:
                 messages.error(request, 'Usuário ou senha inválidos.')
@@ -63,3 +63,9 @@ def cadastro(request):
 
 def home(request):
     return render(request, 'home.html')
+
+def usuario_pag(request):
+    return render(request,'user_dashboard.html')
+
+def admin_pag(request):
+    return render(request,'admin_dashboard.html')

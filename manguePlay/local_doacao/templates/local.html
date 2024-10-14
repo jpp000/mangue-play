@@ -1,100 +1,124 @@
-<style>
-    section {
-        width: 35%;
-    }
-    
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    h1 {
-        margin-bottom: 2%;
-    }
-    
-    .time-section {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 15px;
-    }
-    
-    .time-section div {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    label {
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
-    
-    input[type="time"],
-    input[type="text"],
-    textarea {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-        width: 100%;
-        margin-bottom: 15px;
-    }
-    
-    textarea {
-        resize: none;
-    }
-    
-    button {
-        display: block;
-        padding: 10px;
-        margin: auto;
-        width: 30%;
-        background-color: #333;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s;
-    }
-    
-    button:hover {
-        background-color: black;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Local de Doação</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;  /* Fundo leve para melhor contraste */
+        }
 
-{% load static %}
+        section {
+            width: 100%;
+            max-width: 400px; /* Define uma largura máxima para o formulário */
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
 
-{% block sections %}
-<section>
-    <h1>Compromisso - {{ selected_date }}</h1>
-        {% csrf_token %}
-        <!-- Campo oculto para enviar a data selecionada -->
-        <input type="hidden" name="date" value="{{ selected_date }}">
-        
-        <div class="time-section">
-            <div>
-                <label for="hora_inicio">Hora - Início</label>
-                <input type="time" id="hora_inicio" name="hora_inicio" required>
-            </div>
-            <div>
-                <label for="hora_fim">Hora - Fim</label>
-                <input type="time" id="hora_fim" name="hora_fim" required>
-            </div>
-        </div>
+        h1 {
+            margin-bottom: 2%;
+            color: rgb(6, 49, 6); 
+            text-align: center;
+        }
 
-        <label for="processo">Processo vinculado ao compromisso</label>
-        <input type="text" id="processo" name="processo" required>
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: rgb(6, 49, 6); 
+        }
 
-        <label for="local">Local</label>
-        <input type="text" id="local" name="local" required>
+        input[type="time"],
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        textarea {
+            padding: 10px;
+            border: 1px solid rgb(6, 49, 6); 
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
 
-        <label for="observacoes">Observações</label>
-        <textarea id="observacoes" name="observacoes" rows="5"></textarea>
+        textarea {
+            resize: none;
+        }
 
-        <button type="submit">Salvar</button>
-    </form>
-</section>
-{% endblock %}
+        button {
+            display: block;
+            padding: 10px;
+            width: 100%;  /* Botão ocupa toda a largura */
+            background-color: rgb(26, 104, 26); 
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
 
+        button:hover {
+            background-color: rgb(11, 70, 11);
+        }
 
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgb(6, 49, 6);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: rgb(4, 30, 4);
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'user_dashboard' %}" class="back-button">Voltar</a>
+    <section>
+        <h1>Adicionar Dados de Doação</h1>
+        <form method="POST" action="{% url 'adicionar_doacao' %}">
+            {% csrf_token %}
+            <!-- Campo oculto para enviar a data selecionada -->
+            <input type="hidden" name="date" value="{{ selected_date }}">
+
+            <label for="nome_doador">Nome do Doador</label>
+            <input type="text" id="nome_doador" name="nome_doador" required>
+
+            <label for="contato">Contato (Celular)</label>
+            <input type="tel" id="contato" name="contato" required placeholder="Ex: 99999-9999">
+
+            <label for="local">Local</label>
+            <input type="text" id="local" name="local" required>
+
+            <label for="data">Data</label>
+            <input type="date" id="data" name="data" required>
+
+            <label for="hora_inicio">Hora - Início</label>
+            <input type="time" id="hora_inicio" name="hora_inicio" required>
+
+            <label for="hora_fim">Hora - Fim</label>
+            <input type="time" id="hora_fim" name="hora_fim" required>
+
+            <label for="observacoes">Observações</label>
+            <textarea id="observacoes" name="observacoes" rows="5"></textarea>
+
+            <button type="submit">Salvar</button>
+        </form>
+    </section>
+</body>
+</html>
