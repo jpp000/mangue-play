@@ -109,30 +109,13 @@
         {% endif %}
         <form method="POST">
             {% csrf_token %}
-            <label for="username">Nome de usuário:</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="password1">Senha:</label>
-            <input type="password" id="password1" name="password1" required>
-
-            <label for="password2">Confirme a senha:</label>
-            <input type="password" id="password2" name="password2" required>
-
-            <label for="numero_telefone">Número de telefone:</label>
-            <input type="text" id="numero_telefone" name="numero_telefone">
-
-            <label for="estado">Estado:</label>
-            <select id="estado" name="estado">
-                {% for code, name in estados %}
-                    <option value="{{ code }}">{{ name }}</option>
-                {% endfor %}
-            </select>
-
+            <h2>Cadastro de Usuário</h2>
+            
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            
             <button type="submit">Cadastrar</button>
-        </form>
+        </form>        
         <div class="already-registered">
             <a class= "link" href="{% url 'login' %}">Já tem conta? Faça login</a>
         </div>

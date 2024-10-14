@@ -1,14 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import login as auth_login, authenticate, logout
 from django.contrib import messages
-from django.contrib.auth import login
 from django.contrib.auth.models import User
-from .models import UserProfile  
+from .forms import UserRegistrationForm, UserProfileForm
+from .models import UserProfile
 
-
-
-def login(request):
+def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -16,9 +13,16 @@ def login(request):
         if username and password:
             user = authenticate(request, username=username, password=password)
             if user is not None:
-                auth_login(request, user)
+                auth_login(request, user)  # Usando auth_login para evitar conflito
                 messages.success(request, f'Bem-vindo, {username}!')
-                return render(request,'app.html') 
+                
+                # Verifica se o usuário é admin
+                user_profile = UserProfile.objects.get(user=user)
+                if user_profile.is_admin:
+                    return render(request, 'admin_dashboard.html')  # Redireciona para a página de admin
+                else:
+                    return render(request, 'user_dashboard.html')  # Redireciona para a página de usuário
+                
             else:
                 messages.error(request, 'Usuário ou senha inválidos.')
         else:
@@ -26,49 +30,36 @@ def login(request):
 
     return render(request, 'login.html')
 
-
-def logout1(request):
+def logout_view(request):
     logout(request)
     messages.info(request, 'Você saiu da sua conta.')
     return redirect('home')
 
+def cadastro(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        profile_form = UserProfileForm(request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save(commit=False)
+            user.set_password(user_form.cleaned_data['password1'])
+            user.save()
+
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
+
+            messages.success(request, 'Cadastro realizado com sucesso!')
+            return redirect('login')
+
+        else:
+            messages.error(request, 'Erro no cadastro. Verifique os dados e tente novamente.')
+    
+    else:
+        user_form = UserRegistrationForm()
+        profile_form = UserProfileForm()
+
+    return render(request, 'cadastro.html', {'user_form': user_form, 'profile_form': profile_form})
 
 def home(request):
     return render(request, 'home.html')
-
-
-from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
-from .models import UserProfile
-
-def cadastro(request):
-    estados_brasil = UserProfile.ESTADOS_BRASIL
-
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
-        numero_telefone = request.POST.get('numero_telefone')
-        estado = request.POST.get('estado')
-        is_admin = request.POST.get('is_admin') == 'on'  # Checkbox para definir se é admin
-
-        if password1 != password2:
-            messages.error(request, 'As senhas não coincidem.')
-            return render(request, 'cadastro.html', {'estados': estados_brasil})
-
-        if User.objects.filter(username=username).exists():
-            messages.error(request, 'Nome de usuário já existe.')
-            return render(request, 'cadastro.html', {'estados': estados_brasil})
-
-        if User.objects.filter(email=email).exists():
-            messages.error(request, 'E-mail já está em uso.')
-            return render(request, 'cadastro.html', {'estados': estados_brasil})
-
-        user = User.objects.create_user(username=username, email=email, password=password1)
-        UserProfile.objects.create(user=user, numero_telefone=numero_telefone, estado=estado, is_admin=is_admin)
-
-        messages.success(request, 'Cadastro realizado com sucesso!')
-        return redirect('login')
-
-    return render(request, 'cadastro.html', {'estados': estados_brasil})

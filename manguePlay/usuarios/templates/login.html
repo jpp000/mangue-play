@@ -104,7 +104,6 @@
 
     <div class="login-form">
         <h2>Login</h2>
-        <h2>Login</h2>
         {% if messages %}
             <div class="messages">
                 {% for message in messages %}
@@ -114,14 +113,16 @@
         {% endif %}
         <form method="POST">
             {% csrf_token %}
-            <label for="username">Nome de usuário:</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="password">Senha:</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit">Entrar</button>
+        
+            <label for="username">Nome de Usuário</label>
+            <input type="text" name="username" required>
+        
+            <label for="password">Senha</label>
+            <input type="password" name="password" required>
+        
+            <button type="submit">Login</button>
         </form>
+        
         <div class="already-registered">
             <a class="link" href="{% url 'cadastro' %}">Não tem conta? Cadastre-se</a>
         </div>

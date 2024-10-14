@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Home</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #064206;
+            color: white;
+            position: fixed;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin: 0;
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logout-button {
+            background-color: white;
+            color: #064206;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 40px;
+            background-color: #f4f4f4;
+            height: 100vh;
+        }
+
+        .main-content h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #064206;
+        }
+
+        .functionality-box {
+            background-color: white;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            font-size: 18px;
+            color: #333;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .functionality-box:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div>
+            <h2>Menu principal</h2>
+        </div>
+
+        
+        <a href="pag_inicial.html" class="logout-button">Logout</a>
+    </div>
+
+    <div class="main-content">
+        <h1>Funcionalidades</h1>
+        
+        <a href="pagina1.html" class="functionality-box">Visualizar catálogo</a>
+        <a href="adc_local.html" class="functionality-box">Visualizar local da doação</a>
+        <a href="#" class="functionality-box">Estoque</a>
+        <a href="#" class="functionality-box">Gerar Relatória De vendas</a>
+    </div>
+
+</body>
+</html>
