@@ -96,7 +96,7 @@
     </style>
 </head>
 <body>
-    <a href="{% url 'home' %}" class="back-button">Voltar</a>
+    <a href="{% url 'home' %}" id="a1">Voltar</a>
     
     <div class="register-form">
         <h2>Cadastre-se</h2>
@@ -111,34 +111,30 @@
             {% csrf_token %}
             <label for="username">Nome de usuário:</label>
             <input type="text" id="username" name="username" required>
-        
+
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" required>
-        
+
             <label for="password1">Senha:</label>
             <input type="password" id="password1" name="password1" required>
-        
+
             <label for="password2">Confirme a senha:</label>
             <input type="password" id="password2" name="password2" required>
-        
+
             <label for="numero_telefone">Número de telefone:</label>
             <input type="text" id="numero_telefone" name="numero_telefone">
-        
+
             <label for="estado">Estado:</label>
             <select id="estado" name="estado">
                 {% for code, name in estados %}
                     <option value="{{ code }}">{{ name }}</option>
                 {% endfor %}
             </select>
-        
-            <label for="is_admin">Administrador:</label>
-            <input type="checkbox" id="is_admin" name="is_admin">
-        
+
             <button type="submit">Cadastrar</button>
         </form>
-        
         <div class="already-registered">
-            <a class= "link" href="{% url 'login' %}">Já tem conta? Faça login</a>
+            <a href="login.html">Já possui uma conta? Faça login</a>
         </div>
     </div>
 
