@@ -1,1 +1,97 @@
-<h1>OI
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Doações</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        table, th, td {
+            border: 1px solid #444;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            word-wrap: break-word; /* Adiciona quebra automática */
+        }
+
+        th {
+            background-color: #2c6e2c;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        /* Define um tamanho máximo para a célula e adiciona quebra de palavra */
+        td {
+            max-width: 200px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgb(6, 49, 6);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: rgb(4, 30, 4);
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'admin_dashboard' %}" class="back-button">Voltar</a>
+    <h1 style="text-align: center;">Informações de Doações</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome do Doador</th>
+                <th>Contato</th>
+                <th>Local</th>
+                <th>Data</th>
+                <th>Hora Início</th>
+                <th>Hora Fim</th>
+                <th>Observações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doacao in doacoes %}
+            <tr>
+                <td>{{ doacao.nome_doador }}</td>
+                <td>{{ doacao.contato }}</td>
+                <td>{{ doacao.local }}</td>
+                <td>{{ doacao.data }}</td>
+                <td>{{ doacao.hora_inicio }}</td>
+                <td>{{ doacao.hora_fim }}</td>
+                <td style="word-wrap: break-word; max-width: 200px;">{{ doacao.observacoes }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7">Nenhuma doação encontrada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

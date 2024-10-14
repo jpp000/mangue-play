@@ -33,4 +33,5 @@ def adicionar_doacao(request):
     return render(request, 'local.html')
 
 def visualizar_local(request):
-    return render(request,'visualizar_local.html')
+    doacoes = Doacao.objects.all()
+    return render(request, 'visualizar_local.html', {'doacoes': doacoes})
