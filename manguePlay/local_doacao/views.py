@@ -31,3 +31,6 @@ def adicionar_doacao(request):
         return redirect('user_dashboard')  # Altere 'home' para o nome da view que você deseja redirecionar após salvar
 
     return render(request, 'local.html')
+
+def visualizar_local(request):
+    return render(request,'visualizar_local.html')

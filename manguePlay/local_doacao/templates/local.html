@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Local de Doação</title>
-</head>
     <style>
         body {
             display: flex;
@@ -12,11 +11,12 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: #f0f0f0;  /* Fundo leve para melhor contraste */
         }
 
         section {
-            width: 35%;
-            margin: auto;
+            width: 100%;
+            max-width: 400px; /* Define uma largura máxima para o formulário */
             padding: 20px;
             background-color: #f9f9f9;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -26,6 +26,7 @@
         h1 {
             margin-bottom: 2%;
             color: rgb(6, 49, 6); 
+            text-align: center;
         }
 
         label {
@@ -54,8 +55,7 @@
         button {
             display: block;
             padding: 10px;
-            margin: auto;
-            width: 30%;
+            width: 100%;  /* Botão ocupa toda a largura */
             background-color: rgb(26, 104, 26); 
             color: white;
             border: none;
@@ -86,34 +86,39 @@
             background-color: rgb(4, 30, 4);
         }
     </style>
+</head>
 <body>
     <a href="{% url 'user_dashboard' %}" class="back-button">Voltar</a>
-    <form method="POST" action="{% url 'adicionar_doacao' %}">
-        {% csrf_token %}
-        <!-- Campo oculto para enviar a data selecionada -->
-        <input type="hidden" name="date" value="{{ selected_date }}">
+    <section>
+        <h1>Adicionar Dados de Doação</h1>
+        <form method="POST" action="{% url 'adicionar_doacao' %}">
+            {% csrf_token %}
+            <!-- Campo oculto para enviar a data selecionada -->
+            <input type="hidden" name="date" value="{{ selected_date }}">
 
-        <label for="nome_doador">Nome do Doador</label>
-        <input type="text" id="nome_doador" name="nome_doador" required>
+            <label for="nome_doador">Nome do Doador</label>
+            <input type="text" id="nome_doador" name="nome_doador" required>
 
-        <label for="contato">Contato (Celular)</label>
-        <input type="tel" id="contato" name="contato" required placeholder="Ex: 99999-9999">
+            <label for="contato">Contato (Celular)</label>
+            <input type="tel" id="contato" name="contato" required placeholder="Ex: 99999-9999">
 
-        <label for="local">Local</label>
-        <input type="text" id="local" name="local" required>
+            <label for="local">Local</label>
+            <input type="text" id="local" name="local" required>
 
-        <label for="data">Data</label>
-        <input type="date" id="data" name="data" required>
+            <label for="data">Data</label>
+            <input type="date" id="data" name="data" required>
 
-        <label for="hora_inicio">Hora - Início</label>
-        <input type="time" id="hora_inicio" name="hora_inicio" required>
+            <label for="hora_inicio">Hora - Início</label>
+            <input type="time" id="hora_inicio" name="hora_inicio" required>
 
-        <label for="hora_fim">Hora - Fim</label>
-        <input type="time" id="hora_fim" name="hora_fim" required>
+            <label for="hora_fim">Hora - Fim</label>
+            <input type="time" id="hora_fim" name="hora_fim" required>
 
-        <label for="observacoes">Observações</label>
-        <textarea id="observacoes" name="observacoes" rows="5"></textarea>
+            <label for="observacoes">Observações</label>
+            <textarea id="observacoes" name="observacoes" rows="5"></textarea>
 
-        <button type="submit">Salvar</button>
-    </form>
+            <button type="submit">Salvar</button>
+        </form>
+    </section>
 </body>
+</html>
