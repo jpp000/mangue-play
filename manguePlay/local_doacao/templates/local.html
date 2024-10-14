@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,41 +86,31 @@
             background-color: rgb(4, 30, 4);
         }
     </style>
-<body>
-    <a href="pag_inicial.html" class="back-button">Voltar</a>
-    {% load static %}
-    {% block sections %}
-    <section>
-        <h1>Adiconar Dados de Doação  {{ selected_date }}</h1>
-        <form>
-            {% csrf_token %}
-            
-            <input type="hidden" name="date" value="{{ selected_date }}">
+<form method="POST" action="{% url 'adicionar_doacao' %}">
+    {% csrf_token %}
+    <!-- Campo oculto para enviar a data selecionada -->
+    <input type="hidden" name="date" value="{{ selected_date }}">
 
-            <label for="nome_doador">Nome do Doador</label>
-            <input type="text" id="nome_doador" name="nome_doador" required>
+    <label for="nome_doador">Nome do Doador</label>
+    <input type="text" id="nome_doador" name="nome_doador" required>
 
-            <label for="contato">Contato (Celular)</label>
-            <input type="tel" id="contato" name="contato" pattern="[0-9]{4,5}-[0-9]{4}" required placeholder="Ex: 99999-9999">
+    <label for="contato">Contato (Celular)</label>
+    <input type="tel" id="contato" name="contato" pattern="[0-9]{4,5}-[0-9]{4}" required placeholder="Ex: 99999-9999">
 
-            <label for="local">Local</label>
-            <input type="text" id="local" name="local" required>
+    <label for="local">Local</label>
+    <input type="text" id="local" name="local" required>
 
-            <label for="data">Data</label>
-            <input type="date" id="data" name="data" required>
+    <label for="data">Data</label>
+    <input type="date" id="data" name="data" required>
 
-            <label for="hora_inicio">Hora - Início</label>
-            <input type="time" id="hora_inicio" name="hora_inicio" required>
+    <label for="hora_inicio">Hora - Início</label>
+    <input type="time" id="hora_inicio" name="hora_inicio" required>
 
-            <label for="hora_fim">Hora - Fim</label>
-            <input type="time" id="hora_fim" name="hora_fim" required>
+    <label for="hora_fim">Hora - Fim</label>
+    <input type="time" id="hora_fim" name="hora_fim" required>
 
-            <label for="observacoes">Observações</label>
-            <textarea id="observacoes" name="observacoes" rows="5"></textarea>
+    <label for="observacoes">Observações</label>
+    <textarea id="observacoes" name="observacoes" rows="5"></textarea>
 
-            <button type="submit">Salvar</button>
-        </form>
-    </section>
-    {% endblock %}
-</body>
-</html>
+    <button type="submit">Salvar</button>
+</form>
