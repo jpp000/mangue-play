@@ -25,3 +25,6 @@ urlpatterns = [
     path('', include('usuarios.urls')),
     path('local_doacao/',include('local_doacao.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
