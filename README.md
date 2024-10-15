@@ -8,7 +8,7 @@
 
 - Link Figma:
 
-- Link Azure:
+- Link Azure: mangue-play-hbaah3ckh8hnbng8.brazilsouth-01.azurewebsites.net
 
 # Sr1:
 <details>
