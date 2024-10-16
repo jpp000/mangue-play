@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mangue Play</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            width: 100%;
+            height: 100px;
+            background-color:  #042c04 ;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10 20px;
+        }
+        .logo {
+            max-height: 140px;
+            width: 140px;
+            margin-left: 560px; 
+        }
+        .top-bar .buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .top-bar button {
+            background-color: white;
+            color: rgb(6, 49, 6);
+            border: 2px solid rgb(6, 49, 6);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .top-bar button:hover {
+            background-color: rgb(6, 49, 6);
+            color: white;
+        }
+        .carousel {
+            width: 100%;
+            max-width: 500px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .indicators {
+            text-align: center;
+            margin-top: -50px;
+        }
+        .indicators button {
+            border: none;
+            outline: none;
+            background-color: #bbb;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .indicators button.active {
+            background-color: #333;
+        }
+        .about-us {
+            width: 100%;
+            max-width: 900px;
+            margin: 50px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .about-text {
+            width: 60%;
+        }
+        .about-text h2 {
+            font-size: 24px;
+            color: #064906;
+        }
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            text-align: left;
+        }
+        .about-image {
+            width: 35%;
+            text-align: right;
+        }
+        .about-image img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <img src="{% static 'usuarios/img/Logo da Empresa.jpeg' %}" width="140px">
+        <div class="buttons">
+            {% if user.autenticado %}
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}"><button>Login</button></a>
+                <a href="{% url 'cadastro' %}"><button>Cadastre-se</button></a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="carousel">
+        <img src="{% static 'usuarios/img/Imagem 1.png' %}" width="300px">
+        <img src="{% static 'usuarios/img/Imagem 2.png' %}" width="300px">
+        <img src="{% static 'usuarios/img/Imagem 3.png' %}" width="300px">
+    </div>
+
+    <div class="indicators">
+        <button class="active" onclick="currentImage(0)"></button>
+        <button onclick="currentImage(1)"></button>
+        <button onclick="currentImage(2)"></button>
+    </div>
+
+    <div class="about-us">
+        <div class="about-text">
+            <h2>Sobre Nós:</h2>
+            <p>
+                Criada em 2014, por Danielle Gomes, a Fábrica de Idéias é uma empresa que apoia a causa da economia sustentável de forma ativa. A Brinquedos Manguetown é uma iniciativa com impacto social, ambiental e econômico positivo. O objetivo é criar oportunidades de emprego e geração de renda para mulheres em situação de vulnerabilidade social, por meio da confecção de brinquedos educativos artesanais utilizando reuso têxtil. Dessa forma, promovendo a economia circular e a educação inclusiva e equitativa de qualidade, conseguimos transformar o futuro.
+            </p>
+        </div>
+        <div class="about-image">
+            <img src="{% static 'usuarios/img/Fundadora da Empresa.png' %}" width="300px">
+        </div>
+    </div>
+
+<script>
+    const images = document.querySelectorAll('.carousel img');
+    const indicators = document.querySelectorAll('.indicators button');
+    let currentImageIndex = 0;
+
+    function showNextImage() {
+        images[currentImageIndex].classList.remove('active');
+        indicators[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        images[currentImageIndex].classList.add('active');
+        indicators[currentImageIndex].classList.add('active');
+    }
+
+    function currentImage(index) {
+        images[currentImageIndex].classList.remove('active');
+        indicators[currentImageIndex].classList.remove('active');
+        currentImageIndex = index;
+        images[currentImageIndex].classList.add('active');
+        indicators[currentImageIndex].classList.add('active');
+    }
+
+    setInterval(showNextImage, 3000);
+</script>
+
+</body>
+</html>

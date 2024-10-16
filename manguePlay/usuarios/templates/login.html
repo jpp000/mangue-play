@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgb(6, 49, 6);
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .login-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(6, 49, 6);
+            border: none;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-form input[type="submit"]:hover {
+            background-color: rgb(4, 30, 4);
+        }
+
+        .login-form .already-registered {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .login-form .already-registered a {
+            color: rgb(6, 49, 6);
+            text-decoration: none;
+        }
+
+        .login-form .already-registered a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgb(6, 49, 6);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: rgb(4, 30, 4);
+        }
+        .register-form input[type="submit"]:hover {
+            background-color: rgb(4, 30, 4);
+        }
+
+        .register-form .role-selection {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="{% url 'home' %}" class="back-button">Voltar</a>
+
+    <div class="login-form">
+        <h2>Login</h2>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+        
+            <label for="username">Nome de Usuário</label>
+            <input type="text" name="username" required>
+        
+            <label for="password">Senha</label>
+            <input type="password" name="password" required>
+        
+            <button type="submit">Login</button>
+        </form>
+        
+        <div class="already-registered">
+            <a class="link" href="{% url 'cadastro' %}">Não tem conta? Cadastre-se</a>
+        </div>
+    </div>
+
+</body>
+</html>
