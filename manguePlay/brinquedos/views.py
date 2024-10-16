@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Brinquedo
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 def adicionar_brinquedo(request):
     if request.method == 'POST':
@@ -39,7 +41,7 @@ def adicionar_brinquedo(request):
     
     return render(request, 'adicionar_brinquedo.html')
 
-
+@login_required
 def visualizar_brinquedos(req):
   brinquedos = Brinquedo.objects.all() 
   return render(req, 'visualizar_brinquedos.html', {

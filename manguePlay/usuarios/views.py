@@ -4,6 +4,9 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from .forms import UserRegistrationForm, UserProfileForm
 from .models import UserProfile
+from django.contrib.auth.decorators import login_required
+
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -64,8 +67,10 @@ def cadastro(request):
 def home(request):
     return render(request, 'home.html')
 
+@login_required
 def usuario_pag(request):
     return render(request,'user_dashboard.html')
+
 
 def admin_pag(request):
     return render(request,'admin_dashboard.html')

@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Doacao
 
+@login_required
 def local_doacao(request):
     # Renderiza apenas o formulário
     return render(request, 'local.html')
 
+@login_required
 def adicionar_doacao(request):
     if request.method == 'POST':
         nome_doador = request.POST.get('nome_doador')
@@ -31,6 +34,7 @@ def adicionar_doacao(request):
         return redirect('user_dashboard')  # Altere 'home' para o nome da view que você deseja redirecionar após salvar
 
     return render(request, 'local.html')
+
 
 def visualizar_local(request):
     doacoes = Doacao.objects.all()
