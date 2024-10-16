@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adicionar Local de Doação</title>
+    <style>
+      /* Estilos gerais */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      section {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      h1 {
+        margin-bottom: 2%;
+        color: rgb(6, 49, 6);
+        text-align: center;
+      }
+
+      label {
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: rgb(6, 49, 6);
+      }
+
+      input[type="time"],
+      input[type="text"],
+      input[type="date"],
+      input[type="tel"],
+      textarea,
+      input[type="number"],
+      input[type="file"] {
+        padding: 10px;
+        border: 1px solid rgb(6, 49, 6);
+        border-radius: 4px;
+        font-size: 14px;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      textarea {
+        resize: none;
+      }
+
+      button {
+        display: block;
+        padding: 10px;
+        width: 100%;
+        background-color: rgb(26, 104, 26);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: rgb(11, 70, 11);
+      }
+
+      .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: rgb(6, 49, 6);
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+
+      .back-button:hover {
+        background-color: rgb(4, 30, 4);
+      }
+
+      /* Estilo para a galeria de pré-visualização de imagens */
+      .image-preview {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .image-preview img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="{% url 'admin_dashboard' %}" class="back-button">Voltar</a>
+    <section>
+      <h1>Adicionar Brinquedo</h1>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required />
+
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" name="preco" required step="0.01" />
+
+        <label for="imagem">Imagens:</label>
+        <input type="file" id="imagem" name="imagem" multiple required />
+
+        <button type="submit">Adicionar Brinquedo</button>
+      </form>
+    </section>
+
+    <script>
+      function previewImages() {
+        const previewContainer = document.getElementById("imagePreview");
+        previewContainer.innerHTML = "";
+        const files = document.getElementById("imagem").files;
+
+        if (files) {
+          Array.from(files).forEach((file) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              const img = document.createElement("img");
+              img.src = e.target.result;
+              previewContainer.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
