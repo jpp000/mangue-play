@@ -47,3 +47,9 @@ def visualizar_brinquedos(req):
   return render(req, 'visualizar_brinquedos.html', {
       'brinquedos': brinquedos
   })
+
+def visualizar_brinquedos_admin(req):
+  brinquedos = Brinquedo.objects.all() 
+  return render(req, 'visualizar_brinquedos_admin.html', {
+      'brinquedos': brinquedos
+  })
