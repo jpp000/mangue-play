@@ -1,10 +1,10 @@
 ![image](https://github.com/user-attachments/assets/a63bcaf5-b3e6-47f0-84eb-361b0cb964ee)
 
 # 🌳Mangue Play🌳
- Esse projeto visa ajudar ...
+ A Mangue Play visa ajudar empreendedores, principalmente mulheres, por meio de um trabalho sustentável
 
 # Links Gerais
- - Jira: https://mangue-play.atlassian.net/jira/software/projects/MP/boards/1/backlog?atlOrigin=eyJpIjoiYzYwNzBjZjAzMDdhNDMyYWFlOTdmYjZhMTUzMmUyNDAiLCJwIjoiaiJ9
+ - Link Jira: https://mangue-play.atlassian.net/jira/software/projects/MP/boards/1/backlog?atlOrigin=eyJpIjoiYzYwNzBjZjAzMDdhNDMyYWFlOTdmYjZhMTUzMmUyNDAiLCJwIjoiaiJ9
 
 - Link Azure: https://mangue-play-hbaah3ckh8hnbng8.brazilsouth-01.azurewebsites.net/
 
@@ -14,26 +14,31 @@
 
 </details>
 
+# 🧰 Ferramentas Usadas:
+- Jira: Para gerir as tarefas e acompanhar o projeto.
+- Azure: Hospedar o sistema.
+- Github: Gerenciar o versionamento do código.
+- Miro: Fluxogramas.
 
-# Contribuidores
-Bruno Carvalho -  bcf2@cesar.school
+# 👥 Euipe de Ciência da Computação:
+- Bruno Carvalho
+- Gabriel Antônio
+- Guilherme Coutinho
+- Gustavo Carneiro
+- Igor Couto
+- João Pedro Albuquerque
+- Rafael Serpa
 
-Gabriel Antônio - gaor@cesar.school
+# 👥 Programação em Par:
+- Bruno Carvalho, Guilherme Coutinho, Igor Couto
 
-Gabriel Valério - gvnl@cesar.school
+- Gabriel Antônio, Gustavo Carneiro
+ 
+- João Pedro Albuquerque, Rafael Serpa
 
-Gustavo Carneiro - gcic@cesar.school
-
-Guilherme Coutinho - gca2@cesar.school
-
-Igor Couto - iacnc@cesar.school
-
-Iara Castro - ict@cesar.school
-
-João Pedro Albuquerque - jpsa@cesar.school
-
-Laís Vasconcelos - lbfv@cesar.school
-
-Rafael Serpa - rrsa@cesar.school
-
-Ricardo Ximenes - rxbm@cesar.school
+- *Justificativa: Um dos nossos integrantes saiu do projeto, sendo necessário alocar um aluno para uma dupla.
+# 🧑‍🎨 Equipe de Design
+- Gabriel Valério
+- Iara Castro
+- Laís Vasconcelos
+- Ricardo Ximenes 
