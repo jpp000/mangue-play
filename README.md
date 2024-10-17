@@ -6,9 +6,7 @@
 # Links Gerais
  - Jira: https://mangue-play.atlassian.net/jira/software/projects/MP/boards/1/backlog?atlOrigin=eyJpIjoiYzYwNzBjZjAzMDdhNDMyYWFlOTdmYjZhMTUzMmUyNDAiLCJwIjoiaiJ9
 
-- Link Figma:
-
-- Link Azure:mangue-play-hbaah3ckh8hnbng8.brazilsouth-01.azurewebsites.net
+- Link Azure: https://mangue-play-hbaah3ckh8hnbng8.brazilsouth-01.azurewebsites.net/
 
 # Sr1:
 <details>
