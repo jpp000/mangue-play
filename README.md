@@ -37,7 +37,7 @@
 - Github: Gerenciar o versionamento do código.
 - Miro: Fluxogramas.
 
-# 👥 Euipe de Ciência da Computação:
+# 👥 Equipe de Ciência da Computação:
 - Bruno Carvalho
 - Gabriel Antônio
 - Guilherme Coutinho
