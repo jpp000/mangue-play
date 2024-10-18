@@ -7,8 +7,7 @@
  - Link Jira: https://mangue-play.atlassian.net/jira/software/projects/MP/boards/1/backlog?atlOrigin=eyJpIjoiYzYwNzBjZjAzMDdhNDMyYWFlOTdmYjZhMTUzMmUyNDAiLCJwIjoiaiJ9
 
 - Link Azure: https://mangue-play-hbaah3ckh8hnbng8.brazilsouth-01.azurewebsites.net/
-# Funcionalidade
-<h1>Princpais Funcionalidades</h1>
+# Principais Funcionalidade
 <strong><p>Encomendar brinquedos sustentáveis no catálogo</p></strong>
 <p1>- Como uma visitante do site, eu quero encomendar um brinquedo sustentável disponível no catálogo, para que eu possa garantir a compra de um produto ecológico e apoiar a reciclagem.</p1>
 
