@@ -8,6 +8,7 @@
 
 - Link Azure: https://mangue-play-hbaah3ckh8hnbng8.brazilsouth-01.azurewebsites.net/
 # Principais Funcionalidade
+
 <strong><p>Encomendar brinquedos sustentáveis no catálogo</p></strong>
 <p1>- Como uma visitante do site, eu quero encomendar um brinquedo sustentável disponível no catálogo, para que eu possa garantir a compra de um produto ecológico e apoiar a reciclagem.</p1>
 
@@ -22,6 +23,7 @@
 
 <strong><p>Gerar Relatórios de Vendas de Brinquedos Sustentáveis</p></strong>
 <p1>- Como uma administradora do site, eu quero gerar relatórios de vendas de brinquedos sustentáveis, para que eu possa analisar o desempenho das vendas e tomar decisões estratégicas para melhorar as ofertas e o impacto ambiental.</p1>
+
 
 # Sr1:
 <details>
