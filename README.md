@@ -63,7 +63,6 @@
   https://drive.google.com/file/d/1-Yo6mLjoPUVCgezJSOYZqWvbRa9ZcVms/view?usp=sharing
 
 # Issue
-![image](https://github.com/user-attachments/assets/5f4490ee-9729-49dd-af18-6e18dd741dba)
+![image](https://github.com/user-attachments/assets/b12990b2-84db-49ec-b030-fbf2b37be3a2)
 
-![image](https://github.com/user-attachments/assets/6d0697aa-657d-431c-81d4-ce5cf43dd31f)
 
