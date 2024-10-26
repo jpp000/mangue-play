@@ -78,6 +78,21 @@
             background-color: rgb(4, 30, 4);
         }
     </style>
+    <script>
+        function formatPhoneNumber(input) {
+            // Remove todos os caracteres que não sejam dígitos
+            let value = input.value.replace(/\D/g, '');
+
+            // Formata o valor
+            if (value.length > 2) {
+                value = `(${value.substring(0, 2)}) ${value.substring(2, 7)}` + (value.length > 7 ? `-${value.substring(7, 11)}` : '');
+            } else if (value.length > 0) {
+                value = `(${value}`;
+            }
+
+            input.value = value;
+        }
+    </script>
 </head>
 <body>
     <a href="{% url 'admin_dashboard' %}" class="back-button">Voltar</a>
@@ -89,7 +104,9 @@
             <input type="text" id="nome" name="nome" required>
 
             <label for="contato_numero">Número de Contato:</label>
-            <input type="text" id="contato_numero" name="contato_numero" required>
+            <input type="tel" id="contato_numero" name="contato_numero" required 
+                   pattern="\(\d{2}\) \d{5}-\d{4}" maxlength="15" placeholder="Ex: (81) 99597-4215" 
+                   title="Digite o número no formato (XX) XXXXX-XXXX" oninput="formatPhoneNumber(this)">
 
             <label for="frequencia_de_entrega">Frequência de Entrega:</label>
             <select id="frequencia_de_entrega" name="frequencia_de_entrega" required>
