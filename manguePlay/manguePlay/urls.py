@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('usuarios.urls')),
     path('local_doacao/',include('local_doacao.urls')),
     path('brinquedos/',include('brinquedos.urls')),
+    path('fornecedor/', include('fornecedor.urls')),
 ]
 
 if settings.DEBUG:

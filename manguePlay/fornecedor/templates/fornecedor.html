@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Fornecedor</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;  /* Fundo leve */
+        }
+
+        section {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: rgb(6, 49, 6);
+            text-align: center;
+            margin-bottom: 2%;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: rgb(6, 49, 6);
+        }
+
+        input, select {
+            padding: 10px;
+            border: 1px solid rgb(6, 49, 6);
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        button {
+            display: block;
+            padding: 10px;
+            width: 100%;
+            background-color: rgb(26, 104, 26);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: rgb(11, 70, 11);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgb(6, 49, 6);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: rgb(4, 30, 4);
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'admin_dashboard' %}" class="back-button">Voltar</a>
+    <section>
+        <h1>Adicionar Fornecedor</h1>
+        <form method="POST" action="{% url 'adicionar_fornecedor' %}">
+            {% csrf_token %}
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="contato_numero">Número de Contato:</label>
+            <input type="text" id="contato_numero" name="contato_numero" required>
+
+            <label for="frequencia_de_entrega">Frequência de Entrega:</label>
+            <select id="frequencia_de_entrega" name="frequencia_de_entrega" required>
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="semanal">Semanal</option>
+                <option value="mensal">Mensal</option>
+                <option value="anual">Anual</option>
+            </select>
+
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <button type="submit">Adicionar</button>
+        </form>
+    </section>
+</body>
+</html>

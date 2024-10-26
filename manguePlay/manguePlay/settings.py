@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'local_doacao',
     "whitenoise.runserver_nostatic",
     'brinquedos',
+    'fornecedor',
 ]
 
 MIDDLEWARE = [
