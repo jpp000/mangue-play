@@ -26,6 +26,7 @@ urlpatterns = [
     path('local_doacao/',include('local_doacao.urls')),
     path('brinquedos/',include('brinquedos.urls')),
     path('fornecedor/', include('fornecedor.urls')),
+    path('encomendas/', include('encomendas.urls')),
 ]
 
 if settings.DEBUG:
