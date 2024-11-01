@@ -22,3 +22,8 @@ def adicionar_encomenda(request):
 
     brinquedos = Brinquedo.objects.all()
     return render(request, 'adicionar_encomenda.html', {'brinquedos': brinquedos})
+
+@login_required
+def visualizar_encomendas(request):
+    encomendas = Encomenda.objects.filter(usuario=request.user).order_by('-data_encomenda')
+    return render(request, 'visualizar_encomendas.html', {'encomendas': encomendas})

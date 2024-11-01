@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Encomendas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: rgb(6, 49, 6);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: rgb(6, 49, 6);
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Minhas Encomendas</h1>
+    {% if encomendas %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Brinquedo</th>
+                    <th>Quantidade</th>
+                    <th>Data da Encomenda</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for encomenda in encomendas %}
+                    <tr>
+                        <td>{{ encomenda.brinquedo.nome }}</td>
+                        <td>{{ encomenda.quantidade }}</td>
+                        <td>{{ encomenda.data_encomenda|date:"d/m/Y H:i" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhuma encomenda encontrada.</p>
+    {% endif %}
+</body>
+</html>
