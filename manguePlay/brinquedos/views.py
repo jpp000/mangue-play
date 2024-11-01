@@ -10,7 +10,6 @@ def adicionar_brinquedo(request):
         preco = request.POST.get('preco')
         imagens = request.FILES.getlist('imagem')
 
-        # Validação dos dados de entrada
         if not nome or not preco:
             messages.error(request, "Nome e preço são obrigatórios.")
             return render(request, 'adicionar_brinquedo.html')
@@ -32,7 +31,6 @@ def adicionar_brinquedo(request):
                 messages.error(request, "Os arquivos devem ser imagens.")
                 return render(request, 'adicionar_brinquedo.html')
 
-        # Criação do brinquedo
         brinquedo = Brinquedo.objects.create(nome=nome, preco=preco)
         for img in imagens:
             brinquedo.imagens.create(imagem=img)
@@ -45,7 +43,6 @@ def adicionar_brinquedo(request):
 
 @login_required
 def editar_brinquedo(request):
-    # Recupera o ID do brinquedo da sessão
     id = request.session.get('brinquedo_id')
     
     if request.method == 'POST':
@@ -55,7 +52,6 @@ def editar_brinquedo(request):
         preco = request.POST.get('preco')
         novas_imagens = request.FILES.getlist('imagem')
 
-        # Validação dos dados de entrada
         if not nome or not preco:
             messages.error(request, "Nome e preço são obrigatórios.")
             return render(request, 'editar_brinquedos.html', {'brinquedo': brinquedo})
@@ -68,12 +64,10 @@ def editar_brinquedo(request):
             messages.error(request, "Por favor, insira um valor numérico para o preço.")
             return render(request, 'editar_brinquedos.html', {'brinquedo': brinquedo})
 
-        # Atualização dos dados do brinquedo
         brinquedo.nome = nome
         brinquedo.preco = preco
         brinquedo.save()
 
-        # Adiciona novas imagens, se existirem
         for img in novas_imagens:
             if not img.content_type.startswith('image/'):
                 messages.error(request, "Os arquivos devem ser imagens.")
