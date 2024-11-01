@@ -133,7 +133,8 @@
                     <p>Preço: R$ {{ brinquedo.preco }}</p>
                     <div class="button-group">
                         <a href="{% url 'selecionar_brinquedo' brinquedo.id %}" class="edit-button">Editar</a>
-                        <a href="{% url 'selecionar_brinquedo' brinquedo.id %}" class="delete-button">Excluir</a>
+                        <a href="{% url 'excluir_brinquedo' brinquedo.id %}" class="delete-button">Excluir</a>
+
 
                     </div>
                 </div>

@@ -84,6 +84,12 @@ def editar_brinquedo(request):
     brinquedo = get_object_or_404(Brinquedo, id=id)
     return render(request, 'editar_brinquedos.html', {'brinquedo': brinquedo})
 
+@login_required
+def excluir_brinquedo(request, id):
+    brinquedo = get_object_or_404(Brinquedo, id=id)
+    brinquedo.delete()
+    messages.success(request, "Brinquedo excluído com sucesso.")
+    return redirect('visualizar_brinquedos_admin')
 
 @login_required
 def selecionar_brinquedo(request, id):
