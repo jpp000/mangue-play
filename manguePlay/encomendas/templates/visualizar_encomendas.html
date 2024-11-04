@@ -31,6 +31,23 @@
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+        .btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            cursor: pointer;
+        }
+        .btn-edit {
+            background-color: green;
+        }
+        .btn-delete {
+            background-color: red;
+        }
+        form {
+            display: inline-block; /* Mantém os formulários na mesma linha */
+            margin-right: 10px;   /* Espaçamento entre os botões */
+        }
     </style>
 </head>
 <body>
@@ -42,6 +59,7 @@
                     <th>Brinquedo</th>
                     <th>Quantidade</th>
                     <th>Data da Encomenda</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,6 +68,15 @@
                         <td>{{ encomenda.brinquedo.nome }}</td>
                         <td>{{ encomenda.quantidade }}</td>
                         <td>{{ encomenda.data_encomenda|date:"d/m/Y H:i" }}</td>
+                        <td>
+                            <form action="{% url 'editar_encomenda' encomenda.id %}" method="GET">
+                                <button type="submit" class="btn btn-edit">Editar</button>
+                            </form>
+                            <form action="{% url 'excluir_encomenda' encomenda.id %}" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-delete" onclick="return confirm('Tem certeza de que deseja excluir esta encomenda?')">Excluir</button>
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -27,3 +27,29 @@ def adicionar_encomenda(request):
 def visualizar_encomendas(request):
     encomendas = Encomenda.objects.filter(usuario=request.user).order_by('-data_encomenda')
     return render(request, 'visualizar_encomendas.html', {'encomendas': encomendas})
+
+@login_required
+def excluir_encomenda(request, encomenda_id):
+    if request.method == 'POST':
+        encomenda = get_object_or_404(Encomenda, id=encomenda_id, usuario=request.user)
+        encomenda.delete()
+        messages.success(request, "Encomenda excluída com sucesso.")
+        return redirect('visualizar_encomendas')
+    else:
+        messages.error(request, "Requisição inválida.")
+        return redirect('visualizar_encomendas')
+
+@login_required
+def editar_encomenda(request, id):
+    encomenda = get_object_or_404(Encomenda, id=id, usuario=request.user)  # Certifica-se que a encomenda pertence ao usuário
+    brinquedos = Brinquedo.objects.all()  # Obtém todos os brinquedos
+
+    if request.method == 'POST':
+        # Atualiza a encomenda com os novos dados
+        encomenda.brinquedo_id = request.POST['brinquedo']  # ID do brinquedo selecionado
+        encomenda.quantidade = request.POST['quantidade']  # Nova quantidade
+        encomenda.save()
+        messages.success(request, "Encomenda atualizada com sucesso.")
+        return redirect('visualizar_encomendas')  # Redireciona para a página de visualização
+
+    return render(request, 'editar_encomenda.html', {'encomenda': encomenda, 'brinquedos': brinquedos})
