@@ -25,15 +25,32 @@
             text-align: left;
         }
         th {
-            background-color: rgb(6, 49, 6);
+            background-color: #2c6e2c;
             color: white;
         }
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgb(6, 49, 6);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: rgb(4, 30, 4);
+        }
     </style>
 </head>
 <body>
+    <a href="{% url 'admin_dashboard' %}" class="back-button">Voltar</a>
     <h1>Minhas Encomendas</h1>
     {% if encomendas %}
         <table>

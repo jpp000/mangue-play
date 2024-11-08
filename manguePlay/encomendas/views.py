@@ -18,7 +18,7 @@ def adicionar_encomenda(request):
 
         Encomenda.objects.create(usuario=request.user, brinquedo=brinquedo, quantidade=quantidade)
         messages.success(request, "Encomenda feita com sucesso.")
-        return redirect('visualizar_encomendas')  # Supondo que você tenha essa view
+        return redirect('user_dashboard')  # Supondo que você tenha essa view
 
     brinquedos = Brinquedo.objects.all()
     return render(request, 'adicionar_encomenda.html', {'brinquedos': brinquedos})
