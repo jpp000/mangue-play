@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     'brinquedos',
     'fornecedor',
-    'encomendas'
+    'encomendas',
+    'depoimentos',
 ]
 
 MIDDLEWARE = [
