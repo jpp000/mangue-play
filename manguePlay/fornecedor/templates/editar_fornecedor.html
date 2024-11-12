@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Fornecedor</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: rgb(6, 49, 6);
+            text-align: center;
+            margin-bottom: 2%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: rgb(6, 49, 6);
+        }
+
+        input, select {
+            padding: 10px;
+            border: 1px solid rgb(6, 49, 6);
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        button {
+            display: block;
+            padding: 10px;
+            width: 100%;
+            background-color: rgb(26, 104, 26);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: rgb(11, 70, 11);
+        }
+
+        .cancel-button {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: rgb(6, 49, 6);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .cancel-button:hover {
+            background-color: rgb(4, 30, 4);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgb(6, 49, 6);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: rgb(4, 30, 4);
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Editar Fornecedor</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label>Nome:</label><input type="text" name="nome" value="{{ fornecedor.nome }}">
+            <label>Contato:</label><input type="text" name="contato_numero" value="{{ fornecedor.contato_numero }}">
+            <label>Frequência:</label><input type="text" name="frequencia_de_entrega" value="{{ fornecedor.frequencia_de_entrega }}">
+            <label>Endereço:</label><input type="text" name="endereco" value="{{ fornecedor.endereco }}">
+            <label>Email:</label><input type="email" name="email" value="{{ fornecedor.email }}">
+            <button type="submit">Salvar</button>
+            <a href="{% url 'listar_fornecedores' %}" class="cancel-button">Cancelar</a>
+        </form>
+    </section>
+</body>
+</html>

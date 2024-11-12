@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Excluir Fornecedor</title>
+    <style>
+        /* Mesmo estilo para manter a consistência */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h1 {
+            color: rgb(6, 49, 6);
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: rgb(6, 49, 6);
+            margin: 10px 0;
+        }
+
+        button {
+            display: block;
+            padding: 10px;
+            width: 100%;
+            background-color: rgb(26, 104, 26);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: rgb(11, 70, 11);
+        }
+
+        .cancel-button {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: rgb(6, 49, 6);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .cancel-button:hover {
+            background-color: rgb(4, 30, 4);
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Tem certeza que deseja excluir este fornecedor?</h1>
+        <p>Nome: {{ fornecedor.nome }}</p>
+        <p>Contato: {{ fornecedor.contato_numero }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Excluir</button>
+            <a href="{% url 'listar_fornecedores' %}" class="cancel-button">Cancelar</a>
+        </form>
+    </section>
+</body>
+</html>
