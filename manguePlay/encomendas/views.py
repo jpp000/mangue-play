@@ -16,7 +16,9 @@ def adicionar_encomenda(request):
             messages.error(request, "Por favor, insira uma quantidade válida.")
             return redirect('adicionar_encomenda')
 
-        Encomenda.objects.create(usuario=request.user, brinquedo=brinquedo, quantidade=quantidade)
+        encomenda = Encomenda(usuario=request.user, brinquedo=brinquedo, quantidade=quantidade)
+        encomenda.save()
+        print(encomenda)
         messages.success(request, "Encomenda feita com sucesso.")
         return redirect('user_dashboard')  
 
