@@ -39,7 +39,7 @@
         td {
             max-width: 200px;
         }
-
+        
         .back-button {
             position: absolute;
             top: 20px;
@@ -55,6 +55,31 @@
 
         .back-button:hover {
             background-color: rgb(4, 30, 4);
+        }
+         .action-buttons a {
+            padding: 8px 12px;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .action-buttons a.edit {
+            background-color: #2c6e2c;
+            margin-right: 5px;
+        }
+
+        .action-buttons a.edit:hover {
+            background-color: #1e4a1e;
+        }
+
+        .action-buttons a.delete {
+            background-color: #c92424;
+        }
+
+        .action-buttons a.delete:hover {
+            background-color: #a91d1d;
         }
     </style>
 </head>
@@ -72,6 +97,7 @@
                 <th>Hora Início</th>
                 <th>Hora Fim</th>
                 <th>Observações</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -83,15 +109,19 @@
                 <td>{{ doacao.data }}</td>
                 <td>{{ doacao.hora_inicio }}</td>
                 <td>{{ doacao.hora_fim }}</td>
-                <td style="word-wrap: break-word; max-width: 200px;">{{ doacao.observacoes }}</td>
+                <td>{{ doacao.observacoes }}</td>
+                <td class="action-buttons">
+                    <a href="{% url 'editar_doacao' doacao.id %}" class="edit">Editar</a>
+                    <a href="{% url 'deletar_doacao' doacao.id %}" class="delete">Deletar</a>
+                </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="7">Nenhuma doação encontrada.</td>
+                <td colspan="8">Nenhuma doação registrada.</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-
 </body>
+
 </html>

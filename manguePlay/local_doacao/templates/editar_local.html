@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Doação</title>
+  <style>
+    body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: rgb(6, 49, 6);
+            text-align: center;
+            margin-bottom: 2%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: rgb(6, 49, 6);
+        }
+
+        input, select {
+            padding: 10px;
+            border: 1px solid rgb(6, 49, 6);
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        button {
+            display: block;
+            padding: 10px;
+            width: 100%;
+            background-color: rgb(26, 104, 26);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: rgb(11, 70, 11);
+        }
+
+        .cancel-button {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: rgb(6, 49, 6);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .cancel-button:hover {
+            background-color: rgb(4, 30, 4);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgb(6, 49, 6);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: rgb(4, 30, 4);
+        }
+  </style>
+</head>
+
+<body>
+  <section>
+    <a href="{% url 'visualizar_local' %}" class="back-button">Voltar</a>
+    <h1 style="text-align: center;">Editar Doação</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <label for="nome_doador">Nome do Doador:</label>
+      <input type="text" name="nome_doador" id="nome_doador" value="{{ doacao.nome_doador }}" required>
+      <label for="contato">Contato:</label>
+      <input type="text" name="contato" id="contato" value="{{ doacao.contato }}" required>
+      <label for="local">Local:</label>
+      <input type="text" name="local" id="local" value="{{ doacao.local }}" required>
+      <label for="data">Data:</label>
+      <input type="date" name="data" id="data" value="{{ doacao.data }}" required>
+      <label for="hora_inicio">Hora Início:</label>
+      <input type="time" name="hora_inicio" id="hora_inicio" value="{{ doacao.hora_inicio }}" required>
+      <label for="hora_fim">Hora Fim:</label>
+      <input type="time" name="hora_fim" id="hora_fim" value="{{ doacao.hora_fim }}" required>
+      <label for="observacoes">Observações:</label>
+      <textarea name="observacoes" id="observacoes" required>{{ doacao.observacoes }}</textarea>
+      <button type="submit">Salvar Alterações</button>
+    </form>
+  </section>
+</body>
+
+</html>
