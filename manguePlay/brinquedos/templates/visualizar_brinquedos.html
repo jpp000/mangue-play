@@ -60,19 +60,10 @@
             font-size: 16px;
         }
 
-        .card button {
-            background-color: rgb(26, 104, 26);
-            border: none;
-            color: white;
-            padding: 10px;
-            font-size: 14px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .card button:hover {
-            background-color: rgb(11, 70, 11);
+        .button-group {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
         }
 
         .back-button {
@@ -106,21 +97,13 @@
     {% if brinquedos %}
     <div class="container">
         {% for brinquedo in brinquedos %}
-            <div>
-                <h2>{{ brinquedo.nome }}</h2>
-                <p>Preço: {{ brinquedo.preco }}</p>
-                <div>
-                    <h3>Imagens:</h3>
-                    <div>
-                        {% for imagem in brinquedo.imagens.all %}
-                            <img src="{{ imagem.imagem.url }}" alt="Imagem de {{ brinquedo.nome }}" style="max-width: 200px; max-height: 200px;">
-                        {% empty %}
-                            <p>Não há imagens disponíveis para este brinquedo.</p>
-                        {% endfor %}
-                    </div>
+            <div class="card">
+                <img src="{{ brinquedo.imagens.first.imagem.url }}" alt="Imagem de {{ brinquedo.nome }}" style="max-width: 200px; max-height: 200px;">
+                <div class="card-content">
+                    <h3>{{ brinquedo.nome }}</h3>
+                    <p>Preço: R$ {{ brinquedo.preco }}</p>
                 </div>
             </div>
-            <hr>
         {% endfor %}
     </div>
     {% else %}
