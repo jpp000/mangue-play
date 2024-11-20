@@ -36,7 +36,7 @@ def adicionar_brinquedo(request):
             brinquedo.imagens.create(imagem=img)
 
         messages.success(request, "Brinquedo adicionado com sucesso.")
-        return redirect('visualizar_brinquedos')
+        return redirect('visualizar_brinquedos_admin')
 
     return render(request, 'adicionar_brinquedo.html')
 
