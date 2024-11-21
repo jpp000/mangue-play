@@ -66,6 +66,40 @@
             margin-top: 10px;
         }
 
+        .no-toys-message {
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+            padding: 20px;
+        }
+        .edit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .delete-button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .edit-button:hover {
+            background-color: #45a049;
+        }
+
+        .delete-button:hover {
+            background-color: #d32f2f;
+        }
+
         .back-button {
             display: inline-block;
             margin-bottom: 20px;
@@ -81,13 +115,6 @@
         .back-button:hover {
             background-color: rgb(4, 30, 4);
         }
-
-        .no-toys-message {
-            text-align: center;
-            font-size: 18px;
-            color: #555;
-            padding: 20px;
-        }
     </style>
 </head>
 <body>
@@ -102,6 +129,9 @@
                 <div class="card-content">
                     <h3>{{ brinquedo.nome }}</h3>
                     <p>Preço: R$ {{ brinquedo.preco }}</p>
+                    <div class="button-group">
+                        <a href="{% url 'adicionar_encomenda'%}" class="edit-button">Encomendar</a>
+                    </div>
                 </div>
             </div>
         {% endfor %}
