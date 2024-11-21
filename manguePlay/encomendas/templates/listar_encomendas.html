@@ -68,7 +68,7 @@
     </style>
   </head>
   <body>
-    <a href="{% url 'user_dashboard' %}" class="back-button">Voltar</a>
+    <a href="{% url 'admin_dashboard' %}" class="back-button">Voltar</a>
 
     <h1>Minhas Encomendas</h1>
     {% if encomendas %}
@@ -78,7 +78,6 @@
           <th>Brinquedo</th>
           <th>Quantidade</th>
           <th>Data da Encomenda</th>
-          <th>Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -87,28 +86,6 @@
           <td>{{ encomenda.brinquedo.nome }}</td>
           <td>{{ encomenda.quantidade }}</td>
           <td>{{ encomenda.data_encomenda|date:"d/m/Y H:i" }}</td>
-          <td>
-            <form
-              action="{% url 'editar_encomenda' encomenda.id %}"
-              method="GET"
-            >
-              <button type="submit" class="btn btn-edit">Editar</button>
-            </form>
-            <form
-              action="{% url 'excluir_encomenda' encomenda.id %}"
-              method="POST"
-              style="display: inline"
-            >
-              {% csrf_token %}
-              <button
-                type="submit"
-                class="btn btn-delete"
-                onclick="return confirm('Tem certeza de que deseja excluir esta encomenda?')"
-              >
-                Excluir
-              </button>
-            </form>
-          </td>
         </tr>
         {% endfor %}
       </tbody>

@@ -55,3 +55,8 @@ def editar_encomenda(request, id):
         return redirect('visualizar_encomendas')  # Redireciona para a página de visualização
 
     return render(request, 'editar_encomenda.html', {'encomenda': encomenda, 'brinquedos': brinquedos})
+
+
+def listar_encomendas(req):
+    encomendas = Encomenda.objects.all()
+    return render(req, 'listar_encomendas.html', {'encomendas': encomendas})
