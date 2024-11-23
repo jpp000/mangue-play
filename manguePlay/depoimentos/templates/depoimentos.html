@@ -3,73 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Depoimentos</title>
+    <title>Depoimentos que Inspiram</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
             background-color: #f4f4f4;
         }
 
-        h1, h2 {
+        h1, h2,p {
             color: #333;
             text-align: center;
+            margin-top: 20px;
         }
-
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            margin: 20px auto;
+        h3 {
+        margin: 10px 20px;
+        color: #2c6e2c; 
+        font-size: 20px; 
+        font-weight: 600; 
+        text-align: justify; 
+        line-height: 1.8; 
+        border-left: 5px solid #2c6e2c; 
+        padding-left: 15px; 
+        background-color: #f9f9f9; 
+        border-radius: 5px; 
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); 
         }
-
-        form button {
-            background-color: #2c6e2c;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        form button:hover {
-            background-color: #1f4d1f;
-        }
-
         .depoimentos-list {
-            max-width: 600px;
-            margin: 20px auto;
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
         }
 
         .depoimento {
             background-color: white;
             border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-            overflow-wrap: break-word; /* Quebra automaticamente palavras longas */
-            word-wrap: break-word; /* Compatibilidade com navegadores antigos */
-            word-break: break-word; /* Quebra palavras longas */
-            hyphens: auto; /* Hifeniza quando possível */
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow-wrap: break-word; /* Ajuste para evitar que o texto ultrapasse o bloco */
+            word-wrap: break-word; 
+            word-break: break-word;
         }
 
         .depoimento h3 {
-            margin: 0;
+            margin: 10px 0;
             color: #2c6e2c;
+            font-size: 18px;
         }
 
         .depoimento p {
             color: #444;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         .no-depoimentos {
             text-align: center;
             color: #777;
             font-style: italic;
+            grid-column: 1 / -1;
+        }
+
+        .add-button {
+            display: block;
+            margin: 30px auto;
+            background-color: #2c6e2c;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.3s;
+            width: fit-content;
+        }
+
+        .add-button:hover {
+            background-color: #1f4d1f;
         }
 
         .back-button {
@@ -91,18 +106,13 @@
     </style>
 </head>
 <body>
+    <!-- Botão de voltar -->
     <a href="{% url 'user_dashboard' %}" class="back-button">Voltar</a>
-    <h1>Depoimentos dos Usuários</h1>
+    <h1>Depoimentos que Inspiram</h1>
+    <p>No Brinquedos Manguetown, cada ação conta para criar um futuro mais sustentável. Aqui, compartilhamos histórias de doadores, participantes e educadores que, juntos, estão transformando o lixo em brinquedo e fazendo a diferença no planeta. Junte-se a nós!</p>
 
-    <!-- Formulário para adicionar um novo depoimento -->
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Adicionar Depoimento</button>
-    </form>
-
+    <!-- Lista de depoimentos -->
     <div class="depoimentos-list">
-        <h2>Depoimentos:</h2>
         {% for depoimento in depoimentos %}
             <div class="depoimento">
                 <h3>{{ depoimento.nome }}</h3>
@@ -112,5 +122,8 @@
             <p class="no-depoimentos">Nenhum depoimento ainda.</p>
         {% endfor %}
     </div>
+
+    <!-- Botão para adicionar depoimento -->
+    <a href="{% url 'adicionar_depoimento' %}" class="add-button">Clique aqui e conte sua história também!!</a>
 </body>
 </html>
