@@ -77,6 +77,31 @@
         .back-button:hover {
             background-color: rgb(4, 30, 4);
         }
+        .messages {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        }
+
+        .messages li {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .messages li.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .messages li.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
     </style>
     <script>
         function formatPhoneNumber(input) {
@@ -98,6 +123,13 @@
     <a href="{% url 'admin_dashboard' %}" class="back-button">Voltar</a>
     <section>
         <h1>Adicionar Fornecedor</h1>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
         <form method="POST" action="{% url 'adicionar_fornecedor' %}">
             {% csrf_token %}
             <label for="nome">Nome:</label>
@@ -119,8 +151,8 @@
             <label for="endereco">Endereço:</label>
             <input type="text" id="endereco" name="endereco" required>
 
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="material">Tipo de material reciclável:</label>
+            <input type="text" id="material" name="material" required>
 
             <button type="submit">Adicionar</button>
         </form>

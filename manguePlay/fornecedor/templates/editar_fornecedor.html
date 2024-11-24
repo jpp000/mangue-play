@@ -96,18 +96,50 @@
         .back-button:hover {
             background-color: rgb(4, 30, 4);
         }
+        .messages {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.messages li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.messages li.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.messages li.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
     </style>
 </head>
 <body>
     <section>
         <h1>Editar Fornecedor</h1>
+        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
         <form method="post">
             {% csrf_token %}
             <label>Nome:</label><input type="text" name="nome" value="{{ fornecedor.nome }}">
             <label>Contato:</label><input type="text" name="contato_numero" value="{{ fornecedor.contato_numero }}">
             <label>Frequência:</label><input type="text" name="frequencia_de_entrega" value="{{ fornecedor.frequencia_de_entrega }}">
             <label>Endereço:</label><input type="text" name="endereco" value="{{ fornecedor.endereco }}">
-            <label>Email:</label><input type="email" name="email" value="{{ fornecedor.email }}">
+            <label>Tipo de material reciclável:</label><input type="text" name="material" value="{{ fornecedor.material }}">
             <button type="submit">Salvar</button>
             <a href="{% url 'listar_fornecedores' %}" class="cancel-button">Cancelar</a>
         </form>
