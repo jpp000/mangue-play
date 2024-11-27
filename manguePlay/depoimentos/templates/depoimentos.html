@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Depoimentos que Inspiram</title>
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Abhaya+Libre:wght@600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,55 +12,60 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-
-        h1, h2,p {
+        h1{
+            font-family: 'Krona One', sans-serif;
+        }
+        
+        h1, p {
             color: #333;
             text-align: center;
             margin-top: 20px;
         }
-        h3 {
-        margin: 10px 20px;
-        color: #2c6e2c; 
-        font-size: 20px; 
-        font-weight: 600; 
-        text-align: justify; 
-        line-height: 1.8; 
-        border-left: 5px solid #2c6e2c; 
-        padding-left: 15px; 
-        background-color: #f9f9f9; 
-        border-radius: 5px; 
-        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); 
+        .fonte-p{
+            font-family: 'Abhaya Libre', serif; /* Fonte Abhaya Libre aplicada */
         }
+        .fonte-p p {
+        margin: 0; /* Remove margens */
+        line-height: 1.5; /* Ajusta a altura da linha, se necessário */
+        }
+
         .depoimentos-list {
-            max-width: 1200px;
+            max-width: 800px; /* Ajusta a largura máxima da área */
             margin: 40px auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr); /* Apenas 2 blocos por linha */
+            gap: 50px;
             padding: 0 20px;
+            justify-content: center; /* Centraliza os itens na grade */
         }
 
         .depoimento {
-            background-color: white;
-            border-radius: 8px;
+            background-color: #eba3ff; 
+            border-radius: 35px;
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            overflow-wrap: break-word; /* Ajuste para evitar que o texto ultrapasse o bloco */
-            word-wrap: break-word; 
+            color: rgb(12, 11, 11);
+            overflow-wrap: break-word;
+            word-wrap: break-word;
             word-break: break-word;
-        }
-
-        .depoimento h3 {
-            margin: 10px 0;
-            color: #2c6e2c;
-            font-size: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Espaço entre depoimento e nome */
+            height: 200px; /* Altura ajustada */
         }
 
         .depoimento p {
-            color: #444;
+            color: rgb(7, 0, 0);
             font-size: 14px;
             line-height: 1.5;
+            margin-bottom: 15px; /* Espaço em relação ao nome */
+        }
+
+        .depoimento h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
         }
 
         .no-depoimentos {
@@ -106,24 +112,23 @@
     </style>
 </head>
 <body>
-    <!-- Botão de voltar -->
     <a href="{% url 'user_dashboard' %}" class="back-button">Voltar</a>
-    <h1>Depoimentos que Inspiram</h1>
-    <p>No Brinquedos Manguetown, cada ação conta para criar um futuro mais sustentável. Aqui, compartilhamos histórias de doadores, participantes e educadores que, juntos, estão transformando o lixo em brinquedo e fazendo a diferença no planeta. Junte-se a nós!</p>
-
-    <!-- Lista de depoimentos -->
+    <h1>DEPOIMENTOS QUE INSPIRAM</h1>
+    <div class="fonte-p">
+        <p>No Brinquedos Manguetown, cada ação conta para criar um futuro mais sustentável. Aqui, compartilhamos histórias de doadores, participantes e educadores que, juntos, estão transformando o lixo em brinquedo e fazendo a diferença no planeta. Junte-se a nós!</p>
+    </div>
+       
     <div class="depoimentos-list">
         {% for depoimento in depoimentos %}
             <div class="depoimento">
-                <h3>{{ depoimento.nome }}</h3>
                 <p>{{ depoimento.texto }}</p>
+                <h3>{{ depoimento.nome }}</h3>
             </div>
         {% empty %}
             <p class="no-depoimentos">Nenhum depoimento ainda.</p>
         {% endfor %}
     </div>
 
-    <!-- Botão para adicionar depoimento -->
     <a href="{% url 'adicionar_depoimento' %}" class="add-button">Clique aqui e conte sua história também!!</a>
 </body>
 </html>
