@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Local de Doação</title>
+    <title>Adicionar Dados de Doação</title>
     <style>
         body {
             display: flex;
@@ -11,7 +11,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;  /* Fundo leve para melhor contraste */
+            background-color: white;  /* Fundo leve para melhor contraste */
         }
 
         section {
@@ -86,6 +86,21 @@
             background-color: rgb(4, 30, 4);
         }
     </style>
+     <script>
+        function formatPhoneNumber(input) {
+            // Remove todos os caracteres que não sejam dígitos
+            let value = input.value.replace(/\D/g, '');
+
+            // Formata o valor
+            if (value.length > 2) {
+                value = `(${value.substring(0, 2)}) ${value.substring(2, 7)}` + (value.length > 7 ? `-${value.substring(7, 11)}` : '');
+            } else if (value.length > 0) {
+                value = `(${value}`;
+            }
+
+            input.value = value;
+        }
+    </script>
 </head>
 <body>
     <a href="{% url 'user_dashboard' %}" class="back-button">Voltar</a>
@@ -100,7 +115,8 @@
             <input type="text" id="nome_doador" name="nome_doador" required>
 
             <label for="contato">Contato (Celular)</label>
-            <input type="tel" id="contato" name="contato" required placeholder="Ex: 99999-9999">
+            <input type="tel" id="contato" name="contato" required placeholder="Ex: (81) 99999-4215" 
+            title="Digite o número no formato (XX) XXXXX-XXXX" oninput="formatPhoneNumber(this)">
 
             <label for="local">Local</label>
             <input type="text" id="local" name="local" required>

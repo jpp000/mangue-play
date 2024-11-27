@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Abhaya+Libre:wght@600&display=swap" rel="stylesheet">
+    <title>Doação e Coleta de Materiais</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .centro{
+            padding: 25px;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+            font-family: 'Krona One', sans-serif;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin: 10px 20px;
+            color: black;
+            font-family: 'Abhaya Libre', serif;
+        }
+
+        .green-section {
+            background-color: #54e079;
+            height: 150px;
+            width: 100%;
+            position: relative;
+            border-radius: 50% 50% 0 0;
+            margin-top: 30px;
+            padding-bottom: 143px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            background-color: #eba3ff;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #ee6cc2;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Doação e Coleta de Materiais</h1>
+        <div class="centro">
+        <p>
+            A Fábrica de Ideias, por meio do projeto Brinquedos MangueTown, transforma materiais recicláveis e
+            resíduos têxteis em brinquedos sustentáveis que encantam e educam. Ao doar itens como plásticos,
+            papéis, metais e tecidos, você contribuirá para a criação de brinquedos feitos de forma responsável,
+            promovendo a conscientização ambiental e o reaproveitamento de materiais. Este projeto não só ajuda
+            a diminuir o impacto ambiental, mas também proporciona diversão e aprendizado para crianças de
+            diversas comunidades, incentivando um futuro mais sustentável e cheio de criatividade. Junte-se a nós
+            e faça a diferença!
+        </p>
+    </div>
+        <div class="green-section">
+            <a href="{% url 'adicionar_doacao' %}" class="button">Desejo Doar</a>
+        </div>
+    </div>
+</body>
+</html>

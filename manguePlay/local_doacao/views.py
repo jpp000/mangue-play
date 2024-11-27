@@ -8,6 +8,9 @@ from django.http import HttpResponse
 @login_required
 def local_doacao(request):
     return render(request, 'local.html')
+@login_required
+def infolocal(request):  # Nome corrigido para "infolocal"
+    return render(request, 'infolocal.html')
 
 # Adiciona uma nova doação
 @login_required
