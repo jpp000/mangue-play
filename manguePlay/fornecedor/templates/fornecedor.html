@@ -11,7 +11,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;  /* Fundo leve */
+            background-color: #f0f0f0;
         }
 
         section {
@@ -38,7 +38,7 @@
         input, select {
             padding: 10px;
             border: 1px solid rgb(6, 49, 6);
-            border-radius: 4px;
+            border-radius: 20px;
             font-size: 14px;
             width: 100%;
             margin-bottom: 15px;
@@ -48,7 +48,7 @@
             display: block;
             padding: 10px;
             width: 100%;
-            background-color: rgb(26, 104, 26);
+            background-color: #54e079;
             color: white;
             border: none;
             border-radius: 4px;
@@ -58,14 +58,13 @@
         }
 
         button:hover {
-            background-color: rgb(11, 70, 11);
+            background-color: #51cf72;
         }
-
         .back-button {
             position: absolute;
             top: 20px;
             left: 20px;
-            background-color: rgb(6, 49, 6);
+            background-color: #54e079;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -75,35 +74,10 @@
         }
 
         .back-button:hover {
-            background-color: rgb(4, 30, 4);
+            background-color: #51cf72;
         }
-        .messages {
-        list-style: none;
-        padding: 0;
-        margin: 20px 0;
-        }
-
-        .messages li {
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-
-        .messages li.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .messages li.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
     </style>
-    <script>
+     <script>
         function formatPhoneNumber(input) {
             // Remove todos os caracteres que não sejam dígitos
             let value = input.value.replace(/\D/g, '');
@@ -120,38 +94,30 @@
     </script>
 </head>
 <body>
-    <a href="{% url 'admin_dashboard' %}" class="back-button">Voltar</a>
+    <a href="{% url 'listar_fornecedores' %}" class="back-button">Voltar</a>
     <section>
         <h1>Adicionar Fornecedor</h1>
-        {% if messages %}
-        <ul class="messages">
-        {% for message in messages %}
-        <li class="{{ message.tags }}">{{ message }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
         <form method="POST" action="{% url 'adicionar_fornecedor' %}">
             {% csrf_token %}
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required>
 
             <label for="contato_numero">Número de Contato:</label>
-            <input type="tel" id="contato_numero" name="contato_numero" required 
-                   pattern="\(\d{2}\) \d{5}-\d{4}" maxlength="15" placeholder="Ex: (81) 99597-4215" 
-                   title="Digite o número no formato (XX) XXXXX-XXXX" oninput="formatPhoneNumber(this)">
+            <input type="text" id="contato_numero" name="contato_numero" required placeholder="Ex: (81) 99999-4215" 
+            title="Digite o número no formato (XX) XXXXX-XXXX" oninput="formatPhoneNumber(this)">
 
             <label for="frequencia_de_entrega">Frequência de Entrega:</label>
             <select id="frequencia_de_entrega" name="frequencia_de_entrega" required>
                 <option value="" disabled selected>Selecione uma opção</option>
-                <option value="semanal">Semanal</option>
-                <option value="mensal">Mensal</option>
-                <option value="anual">Anual</option>
+                <option value="Semanal">Semanal</option>
+                <option value="Mensal">Mensal</option>
+                <option value="Anual">Anual</option>
             </select>
 
             <label for="endereco">Endereço:</label>
             <input type="text" id="endereco" name="endereco" required>
 
-            <label for="material">Tipo de material reciclável:</label>
+            <label for="material">Tipo de Material Reciclável:</label>
             <input type="text" id="material" name="material" required>
 
             <button type="submit">Adicionar</button>
