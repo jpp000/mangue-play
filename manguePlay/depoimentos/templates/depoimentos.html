@@ -12,9 +12,11 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            padding-top: 60px;
         }
         h1 {
             font-family: 'Krona One', sans-serif;
+            margin-top: 60px;
         }
         h1, p {
             color: #333;
@@ -112,10 +114,77 @@
             margin-top: -200px;
             border-radius: 50% 50% 0 0;
         }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eba3ff;
+            padding: 10px 20px;
+            color: white;
+            z-index: 1000;
+    }
+    
+    .navbar .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav-links li {
+        display: inline;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: black;
+        font-size: 1rem;
+        transition: color 0.3s;
+        line-height: 1.5;
+    }
+    
+    .nav-links a:hover {
+        color: #00bcd4;
+    }
+    @media (max-width: 768px) {
+        .nav-links {
+            flex-direction: column;
+            display: none;
+            background-color: #333;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            border: 1px solid #444;
+        }
+    
+        .nav-links.active {
+            display: flex;
+        }
+    }
     </style> 
 </head>
 <body>
-    <a href="{% url 'user_dashboard' %}" class="back-button">Voltar</a>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="{% url 'user_dashboard' %}">Home</a></li>
+            <li><a href="{% url 'visualizar_brinquedos' %}">Produtos</a></li>
+            <li><a href="{% url 'login' %}">Sobre Nós</a></li>
+            <li><a href="{% url 'depoimentos' %}">Depoimentos</a></li>
+            <li><a href="{% url 'infolocal' %}">Doação e Coleta de Materiais</a></li>
+            <li><a href="{% url 'visualizar_encomendas' %}">Minhas encomendas</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
     <h1>DEPOIMENTOS QUE INSPIRAM</h1>
     <div class="fonte-p">
         <p>No Brinquedos Manguetown, cada ação conta para criar um futuro mais sustentável. Aqui, compartilhamos histórias de doadores, participantes e educadores que, juntos, estão transformando o lixo em brinquedo e fazendo a diferença no planeta. Junte-se a nós!</p>
