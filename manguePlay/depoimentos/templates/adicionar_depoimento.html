@@ -24,6 +24,7 @@
             display: flex;
             flex-direction: row;
             gap: 20px;
+            position: relative;
         }
 
         .left {
@@ -36,10 +37,12 @@
             align-items: center;
             text-align: center;
             font-family: 'Krona One', sans-serif;
+            z-index: 1;
         }
 
         .right {
             flex: 2;
+            z-index: 1;
         }
 
         form {
@@ -54,9 +57,9 @@
             width: 100%;
             padding: 10px;
             font-size: 16px;
-            border: 1px solid #ccc;
+            border: 1px solid white;
             border-radius: 5px;
-            background-color: #f7f7f7;
+            background-color: white;
         }
 
         form textarea {
@@ -66,7 +69,7 @@
 
         form label {
             font-weight: bold;
-            color: #444;
+            color: black
         }
 
         form input[type="checkbox"] {
@@ -106,12 +109,39 @@
         }
 
         .back-button:hover {
-            background-color: rgb(4, 30, 4);
+            background-color: #54e079;
+        }
+
+        .green-section {
+            background-color: #54e079;
+            height: 100%;
+            width: 68%; /* A largura será 50% da tela */
+            position: absolute;
+            top: 0;
+            right: 0; /* Posiciona à direita */
+            border-radius: 50% 0 0 50%; /* Bordas arredondadas somente do lado esquerdo */
+            z-index: 0; /* Envia para trás */
         }
     </style>
+    <script>
+        function formatPhoneNumber(input) {
+            // Remove todos os caracteres que não sejam dígitos
+            let value = input.value.replace(/\D/g, '');
+
+            // Formata o valor
+            if (value.length > 2) {
+                value = `(${value.substring(0, 2)}) ${value.substring(2, 7)}` + (value.length > 7 ? `-${value.substring(7, 11)}` : '');
+            } else if (value.length > 0) {
+                value = `(${value}`;
+            }
+
+            input.value = value;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
+        <div class="green-section"></div> <!-- Borda verde -->
         <div class="left">
             CONTE SUA HISTÓRIA<br>TAMBÉM!!
         </div>
@@ -122,10 +152,11 @@
                 <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Seu email">
+                <input type="email" id="email" name="email" placeholder="Seu email" required>
 
                 <label for="telefone">Telefone (com DDD):</label>
-                <input type="text" id="telefone" name="telefone" placeholder="Seu telefone">
+                <input type="text" id="telefone" name="telefone" placeholder="Ex: (81) 99597-4215" required pattern="\(\d{2}\) \d{5}-\d{4}" maxlength="15" placeholder="Ex: (81) 99597-4215" 
+                title="Digite o número no formato (XX) XXXXX-XXXX" oninput="formatPhoneNumber(this)">
 
                 <label for="texto">Escreva aqui a sua história:</label>
                 <textarea id="texto" name="texto" placeholder="Digite aqui seu depoimento..." required></textarea>
