@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -15,9 +16,18 @@
             align-items: center;
             height: 100vh;
         }
-
+        .nome_logo{
+        position: absolute; 
+        top: 0; 
+        left: 50%; 
+        transform: translateX(-50%);
+        margin-top: 10px;
+        width: 300px;
+        max-width: 100%; 
+        height: auto;
+        }
         .login-form {
-            background-color: white;
+            background-color: #54e079;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -28,7 +38,7 @@
         .login-form h2 {
             text-align: center;
             margin-bottom: 20px;
-            color: rgb(6, 49, 6);
+            color: black;
         }
 
         .login-form input[type="text"],
@@ -37,27 +47,29 @@
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 20px;
             font-size: 16px;
             box-sizing: border-box;
         }
 
         .login-form input[type="submit"],
         .login-form button {
-            width: 100%;
-            padding: 10px;
-            background-color: rgb(6, 49, 6);
+            width: 50%;
+            padding: 10px 20px;
+            display: block;
+            margin: 0 auto; 
+            background-color: white; 
             border: none;
-            color: white;
+            color: black; 
             font-size: 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            border-radius: 20px; 
+            cursor: pointer; 
+            transition: background-color 0.3s; 
         }
 
         .login-form input[type="submit"]:hover,
         .login-form button:hover {
-            background-color: rgb(4, 30, 4);
+            background-color: #51cf72;
         }
 
         .login-form .already-registered {
@@ -78,7 +90,7 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            background-color: rgb(6, 49, 6);
+            background-color: #54e079;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -88,16 +100,18 @@
         }
 
         .back-button:hover {
-            background-color: rgb(4, 30, 4);
+            background-color: #51cf72;
         }
     </style>
 </head>
 <body>
-
+    <div>
+        <img src="{% static 'usuarios\img\ManguePlayNome png.png' %}" class="nome_logo" width="300px">
+    </div>
+    
     <a href="{% url 'home' %}" class="back-button">Voltar</a>
-
     <div class="login-form">
-        <h2>Login</h2>
+        <h2>Iniciar sessão</h2>
         {% if messages %}
             <div class="messages">
                 {% for message in messages %}
