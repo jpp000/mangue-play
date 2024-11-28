@@ -68,9 +68,8 @@ describe("Fornecedores - Admin", () => {
 
     cy.get('button[type="submit"]').click();
 
-    cy.get('input[name="nome"]:invalid')
-      .should("have.length", 1)
-      .and("have.prop", "validationMessage")
-      .and("contain", "Preencha este campo.");
+    cy.get('input[name="nome"]')
+      .invoke('prop', 'validationMessage') // Obtém a mensagem do navegador
+      .should('include', 'Please fill out this field.'); // Adapta para o idioma padrão
   });
 });
