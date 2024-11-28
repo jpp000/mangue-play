@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <title>Página Home</title>
     <style>
         body {
@@ -80,29 +81,148 @@
             background-color: #e0e0e0;
             transform: scale(1.05);
         }
-
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #eba3ff;
+            padding: 10px 20px;
+            color: white;
+            justify-content: center;
+        }
+        
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            display: inline;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #00bcd4;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                display: none;
+                background-color: #333;
+                position: absolute;
+                top: 50px;
+                right: 20px;
+                border: 1px solid #444;
+            }
+        
+            .nav-links.active {
+                display: flex;
+            }
+        }
+        .nome_logo{
+            width: 300px;
+            max-width: 500px;
+            margin: 50px auto;
+            display: flex;
+            text-align: center;
+        }
+        .nome_logo_contatos{
+            width: 140px;
+            max-width: 500px;
+            margin-left: 50px;
+        }
+        .contatos{
+            list-style: none;
+            margin: 0;
+            margin-left: 2px;
+            padding: 0;
+            display: flex;
+            flex-direction: inline;
+            gap: 60px; 
+            align-items: left;
+        }
+        .cont{
+            display: flex;
+            justify-content: left;
+            gap: 50px;
+        }
+        .contatos li{
+            display: block;
+        }
+        .contatos a{
+            text-decoration: none;
+            color: black;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .contatos a:hover {
+            color: #eba3ff;
+        }
     </style>
 </head>
 <body>
+    <div>
+        <img src="{% static 'usuarios\img\ManguePlayNome png.png' %}" class="nome_logo" width="300px">
+    </div>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="{% url 'visualizar_brinquedos_admin' %}">Produtos</a></li>
+            <li><a href="{% url 'depoimentos' %}">Depoimentos</a></li>
+            <li><a href="{% url 'listar_fornecedores' %}">Fornecedor</a></li>
+            <li><a href="{% url 'visualizar_local' %}">Doação e Coleta de Materiais</a></li>
+            <li><a href="{% url 'visualizar_encomendas' %}">Minhas encomendas</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+    <br><br><br><br><br><br><br><br><br><br>
 
-    <div class="sidebar">
+
+
+
+    /*Espaço para as imagens que vão mandar*/
+
+
+
+
+
+
+
+
+
+
+    <div>
+        <img src="{% static 'usuarios\img\ManguePlayNome png.png' %}" class="nome_logo_contatos">
+    </div>
+    <div class="cont">
+        <br>
         <div>
-            <h2>Menu principal</h2>
+        <div class="contatos">
+            <li><a href="{% url 'visualizar_brinquedos' %}">Produtos</a></li>
+            <li><a href="{% url 'visualizar_encomendas' %}">Meus pedidos</a></li>
+            <li><a href="{% url 'infolocal' %}">Trabalhe conosco</a></li>
         </div>
-
-        
-        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+        <br>
+        <div class="contatos">
+            <li><a href="{% url 'login' %}">Quem somos</a></li>
+            <li><a href="{% url 'depoimentos' %}">Depoimentos</a></li>
+            <li><a href="https://www.instagram.com/fabricas_de_ideias?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa-brands fa-instagram"></i></a></a></li>
+            <li><a href="https://web.facebook.com/p/Fabrica-de-Ideias-100057165531393/?_rdc=1&_rdr"><i class="fa-brands fa-facebook-f"></i></li>
+        </div>
     </div>
-
-    <div class="main-content">
-        <h1>Funcionalidades</h1>
-
-        <a href="{% url 'adicionar_brinquedo' %}" class="functionality-box">Adicionar Brinquedo</a>
-        <a href="{% url 'visualizar_brinquedos_admin' %}" class="functionality-box">vizualizar / Gerenciar Brinquedos</a>
-        <a href="{% url 'visualizar_local' %}" class="functionality-box">Visualizar local da doação</a>
-        <a href="{% url 'listar_fornecedores' %}" class="functionality-box">Fornecedores</a>
-        <a href="{% url 'listar_encomendas' %}" class="functionality-box">Visualizar Encomendas</a>
-    </div>
-
+</div>
 </body>
 </html>
