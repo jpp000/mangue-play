@@ -172,6 +172,11 @@
         .contatos a:hover {
             color: #eba3ff;
         }
+        .foto-menu{
+            margin: 50px auto;
+            display: flex;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -187,22 +192,9 @@
             <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </nav>
-    <br><br><br><br><br><br><br><br><br><br>
-
-
-
-
-    /*Espaço para as imagens que vão mandar*/
-
-
-
-
-
-
-
-
-
-
+    <div>
+        <img src="{% static 'usuarios\img\Fundo Home.png' %}" width="900" class="foto-menu">
+    </div>
     <div>
         <img src="{% static 'usuarios\img\ManguePlayNome png.png' %}" class="nome_logo_contatos">
     </div>
