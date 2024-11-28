@@ -1,4 +1,4 @@
-describe("Adicionar brinquedo - Admin", () => {
+describe("Gerenciar brinquedo - Admin", () => {
     const adminData = {
       username: "admin",
       email: "admin@example.com",

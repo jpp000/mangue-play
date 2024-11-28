@@ -1,5 +1,3 @@
-
-
 describe('Doacao e2e tests', () => {
   const adminData = {
     username: "admin",
