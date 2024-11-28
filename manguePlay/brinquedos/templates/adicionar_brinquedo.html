@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -7,122 +8,202 @@
     <style>
       /* Estilos gerais */
       body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+         margin: 0;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
       }
 
-      section {
+      .navbar {
+        display: flex;
+        justify-content: center;
+        background-color: #eba3ff;
+        padding: 15px;
         width: 100%;
-        max-width: 400px;
-        padding: 20px;
-        background-color: #f9f9f9;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 0; /* Remover margem adicional */
+      }
+
+      .navbar ul {
+        display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+      }
+
+      .navbar a {
+        text-decoration: none;
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: color 0.3s;
+      }
+
+      .navbar a:hover {
+        color: #00bcd4;
+      }
+
+      .content {
+        display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #65e665;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
       }
 
       h1 {
-        margin-bottom: 2%;
-        color: rgb(6, 49, 6);
-        text-align: center;
+        margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: rgb(6, 49, 6);
+  text-align: center;
       }
 
-      label {
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: rgb(6, 49, 6);
-      }
-
-      input[type="time"],
-      input[type="text"],
-      input[type="date"],
-      input[type="tel"],
-      textarea,
-      input[type="number"],
-      input[type="file"] {
-        padding: 10px;
-        border: 1px solid rgb(6, 49, 6);
-        border-radius: 4px;
-        font-size: 14px;
+      form {
         width: 100%;
-        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .form-group {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      textarea,
+      button {
+        padding: 10px;
+        border: 1px solid;
+        border-radius: 8px;
+        font-size: 14px;
+        background-color: #ffffff;
+      }
+
+      input::placeholder {
+        color: black;
+        font-size: 14px;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #ffffff;
+      }
+
+      input[type="file"] {
+        border: none;
+        padding: 0;
+      }
+
+      input[type="file"]::file-selector-button {
+        background-color: #ffffff;
+        color: black;
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      input[type="file"]::file-selector-button:hover {
+        background-color: #ffffff;
       }
 
       textarea {
         resize: none;
+        height: 100px;
       }
 
       button {
-        display: block;
-        padding: 10px;
-        width: 100%;
-        background-color: rgb(26, 104, 26);
-        color: white;
+        background-color: white;
+        color: black;
         border: none;
-        border-radius: 4px;
         cursor: pointer;
         font-size: 16px;
         transition: background-color 0.3s;
       }
-
-      button:hover {
-        background-color: rgb(11, 70, 11);
+      button:hover{
+        background-color: #51cf72;
       }
 
-      .back-button {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        background-color: rgb(6, 49, 6);
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 16px;
-        transition: background-color 0.3s;
-      }
+      @media (max-width: 768px) {
+        .content {
+          max-width: 90%;
+        }
 
-      .back-button:hover {
-        background-color: rgb(4, 30, 4);
-      }
+        .navbar ul {
+          flex-direction: column;
+          align-items: center;
+        }
 
-      /* Estilo para a galeria de pré-visualização de imagens */
-      .image-preview {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 10px;
-        margin-top: 15px;
+        .form-group {
+          flex-direction: column;
+        }
       }
-
-      .image-preview img {
-        width: 100%;
-        height: auto;
-        border-radius: 4px;
-        object-fit: cover;
+      .nome_logo{
+        display: block;
+        width: 300px;
+        max-width: 100%;
+        margin: 20px auto 0;
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <a href="{% url 'admin_dashboard' %}" class="back-button">Voltar</a>
-    <section>
+    <div>
+      <img src="{% static 'usuarios\img\ManguePlayNome png.png' %}" class="nome_logo" width="300px">
+  </div>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="{% url 'admin_dashboard' %}">Home</a></li>
+            <li><a href="{% url 'visualizar_brinquedos_admin' %}">Produtos</a></li>
+            <li><a href="{% url 'adicionar_brinquedo' %}">Adicionar Brinquedo</a></li>
+            <li><a href="{% url 'depoimentos_admin' %}">Depoimentos</a></li>
+            <li><a href="{% url 'listar_fornecedores' %}">Fornecedor</a></li>
+            <li><a href="{% url 'visualizar_local' %}">Doação e Coleta de Materiais</a></li>
+            <li><a href="{% url 'listar_encomendas' %}">Visualizar encomendas</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+      </ul>
+    </nav><br>
+    <div class="content">
       <h1>Adicionar Brinquedo</h1>
       <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required />
+        <div class="form-group">
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Nome"
+            required
+          />
+          <input
+            type="number"
+            id="preco"
+            name="preco"
+            placeholder="Preço"
+            step="0.01"
+            required
+          />
+        </div>
 
-        <label for="preco">Preço:</label>
-        <input type="number" id="preco" name="preco" required step="0.01" />
-
-        <label for="imagem">Imagens:</label>
+        <label for="imagem">Adicionar imagem:</label>
         <input type="file" id="imagem" name="imagem" multiple required />
 
-        <button type="submit">Adicionar Brinquedo</button>
+        <button type="submit">Enviar</button>
       </form>
-    </section>
+    </div>
 
     <script>
       function previewImages() {
