@@ -30,3 +30,11 @@ def adicionar_depoimento_view(request):
         'form': form
     }
     return render(request, 'adicionar_depoimento.html', context)
+
+# View para a administração dos depoimentos
+def depoimentos_admin_view(request):
+    depoimentos = Depoimento.objects.all()  # Recupera todos os depoimentos
+    context = {
+        'depoimentos': depoimentos
+    }
+    return render(request, 'depoimentos_admin.html', context)  # Renderiza o novo template
