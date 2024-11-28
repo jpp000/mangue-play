@@ -143,12 +143,12 @@
         .nome_logo_contatos{
             width: 140px;
             max-width: 500px;
-            margin-left: 50px;
+            margin-left: 300px;
         }
         .contatos{
             list-style: none;
             margin: 0;
-            margin-left: 2px;
+            margin-left: 250px;
             padding: 0;
             display: flex;
             flex-direction: inline;
@@ -177,6 +177,39 @@
             display: flex;
             text-align: center;
         }
+        .about-us {
+            width: 100%;
+            max-width: 900px;
+            margin: 50px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        .about-text {
+            width: 60%;
+            justify-content: inline;
+            align-items: right;
+        }
+        .about-text h2 {
+            font-size: 24px;
+            color: black;
+        }
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            text-align: left;
+        }
+        .about-image {
+            width: 35%;
+            text-align: right;
+        }
+        .about-image img {
+            width: 100%;
+            max-width: 300px;
+            
+        }
     </style>
 </head>
 <body>
@@ -189,13 +222,27 @@
             <li><a href="{% url 'adicionar_brinquedo' %}">Adicionar Brinquedo</a></li>
             <li><a href="{% url 'depoimentos_admin' %}">Depoimentos</a></li>
             <li><a href="{% url 'listar_fornecedores' %}">Fornecedor</a></li>
-            <li><a href="{% url 'visualizar_local' %}">Doação e Coleta de Materiais</a></li>
+            <li><a href="{% url 'visualizar_local' %}" class="doacao">Doação e Coleta de Materiais</a></li>
             <li><a href="{% url 'listar_encomendas' %}">Visualizar encomendas</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </nav>
     <div>
         <img src="{% static 'usuarios\img\Fundo Home.png' %}" width="900" class="foto-menu">
+    </div>
+    <div class="about-us">
+        <div class="about-image">
+            <img src="{% static 'usuarios\img\danielle.jpeg' %}">
+        </div>
+        <div class="about-text">
+            <h2>Sobre Nós:</h2>
+            <p>
+                Artesã e graduanda em Psicologia.
+            Apaixonada por brinquedos artesanais e 
+            fascinada pelo desenvolvimento de pessoas no 
+            processo de ensino de aprendizagem.
+            </p>
+        </div>
     </div>
     <div>
         <img src="{% static 'usuarios\img\ManguePlayNome png.png' %}" class="nome_logo_contatos">
