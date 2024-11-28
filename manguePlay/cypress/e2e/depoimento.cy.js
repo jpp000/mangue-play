@@ -1,6 +1,6 @@
 describe('Teste de Depoimentos', () => {
   beforeEach(() => {
-      cy.exec('del /f db.sqlite3'); 
+      cy.exec('rm -f db.sqlite3'); 
       cy.exec('python manage.py migrate');
       cy.visit("http://127.0.0.1:8000");
       cy.get(".register").click();
