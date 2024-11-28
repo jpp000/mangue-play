@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -12,11 +13,9 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            padding-top: 60px;
         }
         h1 {
             font-family: 'Krona One', sans-serif;
-            margin-top: 60px;
         }
         h1, p {
             color: #333;
@@ -115,17 +114,14 @@
             border-radius: 50% 50% 0 0;
         }
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: #eba3ff;
-            padding: 10px 20px;
+            padding: 5px 20px;
             color: white;
             z-index: 1000;
+            margin-top:-148px;
     }
     
     .navbar .logo {
@@ -171,9 +167,23 @@
             display: flex;
         }
     }
+    .nome_logo{
+        width: 300px;
+        max-width: 500px;
+        margin: 50px auto;
+        display: flex;
+        text-align: center;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
     </style> 
 </head>
 <body>
+    <div>
+        <img src="{% static 'usuarios\img\ManguePlayNome png.png' %}" class="nome_logo" width="300px">
+    </div>
+    <br><br><br><br><br><br>
     <nav class="navbar">
         <ul class="nav-links">
             <li><a href="{% url 'user_dashboard' %}">Home</a></li>
